@@ -47,6 +47,8 @@ PODS:
   - FirebaseUI/Auth (7.0.0):
     - Firebase/Auth (~> 6.0)
     - GoogleUtilities/UserDefaults
+  - FirebaseUI/Email (7.0.0):
+    - FirebaseUI/Auth
   - GoogleAppMeasurement (6.0.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -85,6 +87,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - FirebaseUI/Auth
+  - FirebaseUI/Email
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -119,6 +122,6 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
 
-PODFILE CHECKSUM: a11f792106ec1800706290edd6a2b6552e2df662
+PODFILE CHECKSUM: 7b13576a28941acde92bb7bb0a220c028fb7627c
 
 COCOAPODS: 1.6.2
