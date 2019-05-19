@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>830690301438-183l575s7h8u5i59qqe2uakosoq9dlkf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.830690301438-183l575s7h8u5i59qqe2uakosoq9dlkf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBShuu2dfI2xeOJkUIlQbTmQg5VvEYyDck</string>
+	<key>GCM_SENDER_ID</key>
+	<string>830690301438</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.makeschool.Makestagram</string>
+	<key>PROJECT_ID</key>
+	<string>makestagram-347e0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>makestagram-347e0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:830690301438:ios:c0bddbf2b4157008</string>
+	<key>DATABASE_URL</key>
+	<string>https://makestagram-347e0.firebaseio.com</string>
+</dict>
+</plist>
