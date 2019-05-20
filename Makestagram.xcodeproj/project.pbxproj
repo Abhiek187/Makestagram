@@ -15,6 +15,9 @@
 		2511F4142291D7C8004D5CA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2511F4132291D7C8004D5CA8 /* GoogleService-Info.plist */; };
 		2511F41F2291E03A004D5CA8 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2511F41E2291E03A004D5CA8 /* Login.storyboard */; };
 		2511F4212291E0D8004D5CA8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511F4202291E0D8004D5CA8 /* LoginViewController.swift */; };
+		2511F423229203E9004D5CA8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511F422229203E9004D5CA8 /* User.swift */; };
+		2511F427229206F4004D5CA8 /* CreateUsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511F426229206F4004D5CA8 /* CreateUsernameViewController.swift */; };
+		2511F42922921673004D5CA8 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511F42822921673004D5CA8 /* UserService.swift */; };
 		469F509057D52B44E314C14E /* Pods_Makestagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5ABFE752392A022738F9F /* Pods_Makestagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +33,9 @@
 		2511F4132291D7C8004D5CA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2511F41E2291E03A004D5CA8 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		2511F4202291E0D8004D5CA8 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		2511F422229203E9004D5CA8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		2511F426229206F4004D5CA8 /* CreateUsernameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameViewController.swift; sourceTree = "<group>"; };
+		2511F42822921673004D5CA8 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		B7A5ABFE752392A022738F9F /* Pods_Makestagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Makestagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DC5EF2A67A09D4573918D7 /* Pods-Makestagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Makestagram.release.xcconfig"; path = "Target Support Files/Pods-Makestagram/Pods-Makestagram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +92,7 @@
 			children = (
 				2511F4032291D14F004D5CA8 /* ViewController.swift */,
 				2511F4202291E0D8004D5CA8 /* LoginViewController.swift */,
+				2511F426229206F4004D5CA8 /* CreateUsernameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -107,6 +114,7 @@
 		2511F4182291DAA2004D5CA8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2511F422229203E9004D5CA8 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 		2511F4192291DAAF004D5CA8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2511F42822921673004D5CA8 /* UserService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -314,8 +323,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2511F423229203E9004D5CA8 /* User.swift in Sources */,
 				2511F4212291E0D8004D5CA8 /* LoginViewController.swift in Sources */,
+				2511F42922921673004D5CA8 /* UserService.swift in Sources */,
 				2511F4042291D14F004D5CA8 /* ViewController.swift in Sources */,
+				2511F427229206F4004D5CA8 /* CreateUsernameViewController.swift in Sources */,
 				2511F4022291D14F004D5CA8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
