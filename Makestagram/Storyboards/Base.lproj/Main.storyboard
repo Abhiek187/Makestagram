@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="9FW-8M-f7K"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_plus_black" id="2NA-ed-NsD">
+                    <tabBarItem key="tabBarItem" tag="1" title="" image="tab_plus_black" id="2NA-ed-NsD">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                 </viewController>
@@ -46,10 +46,10 @@
             </objects>
             <point key="canvasLocation" x="196" y="-642"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="9oz-33-FWw">
             <objects>
-                <tabBarController id="BOm-Mj-o0R" sceneMemberID="viewController">
+                <tabBarController id="BOm-Mj-o0R" customClass="MainTabBarController" customModule="Makestagram" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lmd-KU-lv8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -75,7 +75,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="fuH-8N-vNf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="tab_find_friends_black" id="ZDv-Cp-q6k">
+                    <tabBarItem key="tabBarItem" tag="2" title="" image="tab_find_friends_black" id="ZDv-Cp-q6k">
                         <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
                     </tabBarItem>
                 </viewController>

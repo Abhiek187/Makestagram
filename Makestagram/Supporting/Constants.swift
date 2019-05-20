@@ -16,4 +16,10 @@ struct Constants {
     struct UserDefaults {
         static let currentUser = "currentUser"
     }
+    
+    struct Tags {
+        static let homeTag = 0
+        static let addPhotoTag = 1
+        static let findFriendsTag = 2
+    }
 }
