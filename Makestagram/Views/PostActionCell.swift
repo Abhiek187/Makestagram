@@ -9,7 +9,14 @@
 import Foundation
 import UIKit
 
+protocol PostActionCellDelegate: class {
+    func didTapLikeButton(_ likeButton: UIButton, on cell: PostActionCell)
+}
+
 class PostActionCell: UITableViewCell {
+    
+    // MARK: - Properties
+    weak var delegate: PostActionCellDelegate?
     
     static let height: CGFloat = 46
     
@@ -28,6 +35,6 @@ class PostActionCell: UITableViewCell {
     // MARK: - IBActions
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
-        print("like button tapped")
+        delegate?.didTapLikeButton(sender, on: self)
     }
 }
