@@ -20,6 +20,7 @@
 		2511F42B2292291B004D5CA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511F42A2292291B004D5CA8 /* Constants.swift */; };
 		2511F42D22922A5A004D5CA8 /* Storyboard+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511F42C22922A5A004D5CA8 /* Storyboard+Utility.swift */; };
 		255DA7E822937EFF00EA6911 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255DA7E722937E5E00EA6911 /* Home.storyboard */; };
+		255DA7EA229381DA00EA6911 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DA7E9229381DA00EA6911 /* PostImageCell.swift */; };
 		25AC9000229340E5007F24CB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC8FFF229340E5007F24CB /* HomeViewController.swift */; };
 		25AC9002229340F2007F24CB /* FindFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC9001229340F2007F24CB /* FindFriendsViewController.swift */; };
 		25AC900422934A4F007F24CB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC900322934A4F007F24CB /* MainTabBarController.swift */; };
@@ -49,6 +50,7 @@
 		2511F42A2292291B004D5CA8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		2511F42C22922A5A004D5CA8 /* Storyboard+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storyboard+Utility.swift"; sourceTree = "<group>"; };
 		255DA7E622937E5E00EA6911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		255DA7E9229381DA00EA6911 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
 		25AC8FFF229340E5007F24CB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		25AC9001229340F2007F24CB /* FindFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsViewController.swift; sourceTree = "<group>"; };
 		25AC900322934A4F007F24CB /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		2511F41D2291DAEB004D5CA8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				255DA7E9229381DA00EA6911 /* PostImageCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-Makestagram/Pods-Makestagram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -342,6 +346,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -363,6 +368,7 @@
 				25AC900422934A4F007F24CB /* MainTabBarController.swift in Sources */,
 				2511F42922921673004D5CA8 /* UserService.swift in Sources */,
 				25AC900C229362DE007F24CB /* Post.swift in Sources */,
+				255DA7EA229381DA00EA6911 /* PostImageCell.swift in Sources */,
 				25AC900E229366D2007F24CB /* UIImage+Size.swift in Sources */,
 				25AC9000229340E5007F24CB /* HomeViewController.swift in Sources */,
 				25AC9006229351A6007F24CB /* MGPhotoHelper.swift in Sources */,

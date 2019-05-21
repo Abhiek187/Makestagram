@@ -21,13 +21,27 @@
                                 <rect key="frame" x="20" y="88" width="374" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostImageCell" id="vd2-LD-2dY">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="PostImageCell" rowHeight="375" id="vd2-LD-2dY" customClass="PostImageCell" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="374" height="375"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vd2-LD-2dY" id="YMd-22-pLP">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="374.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VIe-M8-RyM">
+                                                    <rect key="frame" x="20" y="11" width="334" height="353"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="VIe-M8-RyM" secondAttribute="bottom" id="5rL-fY-OEa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="VIe-M8-RyM" secondAttribute="trailing" id="VvJ-7a-mMa"/>
+                                                <constraint firstItem="VIe-M8-RyM" firstAttribute="leading" secondItem="YMd-22-pLP" secondAttribute="leadingMargin" id="ay6-dy-Epi"/>
+                                                <constraint firstItem="VIe-M8-RyM" firstAttribute="top" secondItem="YMd-22-pLP" secondAttribute="topMargin" id="txq-GC-LLx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="postImageView" destination="VIe-M8-RyM" id="X0p-LW-w7G"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
