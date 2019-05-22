@@ -13,6 +13,7 @@ extension UIStoryboard {
     enum MGType: String {
         case main
         case login
+        case findFriends
         
         var filename: String {
             return rawValue.capitalized

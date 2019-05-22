@@ -29,8 +29,8 @@ struct PostService {
         let currentUser = User.current
         let post = Post(imageURL: urlString, imageHeight: aspectHeight)
         
-        let rootRef = Database.database().reference()
-        let newPostRef = rootRef.child("posts").child(currentUser.uid).childByAutoId()
+        let rootRef = DatabaseReference.toLocation(.root)
+        let newPostRef = DatabaseReference.toLocation(.newPost(currentUID: currentUser.uid))
         let newPostKey = newPostRef.key
         
         UserService.followers(for: currentUser) { (followerUIDs) in
@@ -50,7 +50,7 @@ struct PostService {
     }
     
     static func show(forKey postKey: String, posterUID: String, completion: @escaping (Post?) -> Void) {
-        let ref = Database.database().reference().child("posts").child(posterUID).child(postKey)
+        let ref = DatabaseReference.toLocation(.showPost(uid: posterUID, postKey: postKey))
         
         ref.observeSingleEvent(of: .value, with: { (snapshot) in
             guard let post = Post(snapshot: snapshot) else {
