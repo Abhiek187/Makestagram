@@ -29,7 +29,9 @@ class LoginViewController: UIViewController {
         guard let authUI = FUIAuth.defaultAuthUI() else { return }
         
         authUI.delegate = self
-        let providers : [FUIAuthProvider] = [FUIEmailAuth()]
+        
+        // Configure Auth UI for email, Facebook, and Google login
+        let providers: [FUIAuthProvider] = [FUIEmailAuth(), FUIFacebookAuth(), FUIGoogleAuth()]
         authUI.providers = providers
         
         let authViewController = authUI.authViewController()
