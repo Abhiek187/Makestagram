@@ -36,14 +36,14 @@ struct PostService {
         UserService.followers(for: currentUser) { (followerUIDs) in
             let timelinePostDict = ["poster_uid" : currentUser.uid]
             
-            var updatedData: [String : Any] = ["timeline/\(currentUser.uid)/\(String(describing: newPostKey))" : timelinePostDict]
+            var updatedData: [String : Any] = ["timeline/\(currentUser.uid)/\(newPostKey ?? "unknown")" : timelinePostDict]
             
             for uid in followerUIDs {
-                updatedData["timeline/\(uid)/\(String(describing: newPostKey))"] = timelinePostDict
+                updatedData["timeline/\(uid)/\(newPostKey ?? "unknown")"] = timelinePostDict
             }
             
             let postDict = post.dictValue
-            updatedData["posts/\(currentUser.uid)/\(String(describing: newPostKey))"] = postDict
+            updatedData["posts/\(currentUser.uid)/\(newPostKey ?? "unknown")"] = postDict
             
             rootRef.updateChildValues(updatedData)
         }
