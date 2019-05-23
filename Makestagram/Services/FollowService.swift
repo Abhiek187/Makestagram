@@ -22,6 +22,40 @@ struct FollowService {
                 success(false)
             }
             
+            let dispatchGroup = DispatchGroup()
+            
+            dispatchGroup.enter()
+            
+            let followingCountRef = DatabaseReference.toLocation(.followingCount(uid: currentUID))
+            followingCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+                let currentCount = mutableData.value as? Int ?? 0
+                mutableData.value = currentCount + 1
+                
+                return TransactionResult.success(withValue: mutableData)
+            }, andCompletionBlock: { (error, _, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                }
+                
+                dispatchGroup.leave()
+            })
+            
+            dispatchGroup.enter()
+            let followerCountRef = DatabaseReference.toLocation(.followerCount(uid: user.uid))
+            followerCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+                let currentCount = mutableData.value as? Int ?? 0
+                mutableData.value = currentCount + 1
+                
+                return TransactionResult.success(withValue: mutableData)
+            }, andCompletionBlock: { (error, _, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                }
+                
+                dispatchGroup.leave()
+            })
+            
+            dispatchGroup.enter()
             UserService.posts(for: user) { (posts) in
                 let postKeys = posts.compactMap { $0.key }
                 
@@ -34,8 +68,12 @@ struct FollowService {
                         assertionFailure(error.localizedDescription)
                     }
                     
-                    success(error == nil)
+                    dispatchGroup.leave()
                 })
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                success(true)
             }
         }
     }
@@ -54,19 +92,59 @@ struct FollowService {
                 success(false)
             }
             
+            let dispatchGroup = DispatchGroup()
+            
+            dispatchGroup.enter()
+            let followingCountRef = DatabaseReference.toLocation(.followingCount(uid: currentUID))
+            followingCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+                let currentCount = mutableData.value as? Int ?? 0
+                mutableData.value = currentCount - 1
+                
+                return TransactionResult.success(withValue: mutableData)
+            }, andCompletionBlock: { (error, _, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                }
+                
+                dispatchGroup.leave()
+            })
+            
+            dispatchGroup.enter()
+            let followerCountRef = DatabaseReference.toLocation(.followerCount(uid: user.uid))
+            followerCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+                let currentCount = mutableData.value as? Int ?? 0
+                mutableData.value = currentCount - 1
+                
+                return TransactionResult.success(withValue: mutableData)
+            }, andCompletionBlock: { (error, _, _) in
+                if let error = error {
+                    assertionFailure(error.localizedDescription)
+                }
+                
+                dispatchGroup.leave()
+            })
+            
+            dispatchGroup.enter()
             UserService.posts(for: user, completion: { (posts) in
                 var unfollowData = [String : Any]()
-                let postKeys = posts.compactMap { $0.key }
-                postKeys.forEach { unfollowData["timeline/\(currentUID)/\($0)"] = NSNull() }
+                let postsKeys = posts.compactMap { $0.key }
+                postsKeys.forEach {
+                    // Use NSNull() object instead of nil because updateChildValues expects type [Hashable : Any]
+                    unfollowData["timeline/\(currentUID)/\($0)"] = NSNull()
+                }
                 
                 ref.updateChildValues(unfollowData, withCompletionBlock: { (error, ref) in
                     if let error = error {
                         assertionFailure(error.localizedDescription)
                     }
                     
-                    success(error == nil)
+                    dispatchGroup.leave()
                 })
             })
+            
+            dispatchGroup.notify(queue: .main) {
+                success(true)
+            }
         }
     }
     

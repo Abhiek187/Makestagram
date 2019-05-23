@@ -45,7 +45,17 @@ struct PostService {
             let postDict = post.dictValue
             updatedData["posts/\(currentUser.uid)/\(newPostKey ?? "unknown")"] = postDict
             
-            rootRef.updateChildValues(updatedData)
+            rootRef.updateChildValues(updatedData, withCompletionBlock: { (error, ref) in
+                let postCountRef = DatabaseReference.toLocation(.postCount(uid: currentUser.uid))
+                
+                postCountRef.runTransactionBlock({ (mutableData) -> TransactionResult in
+                    let currentCount = mutableData.value as? Int ?? 0
+                    
+                    mutableData.value = currentCount + 1
+                    
+                    return TransactionResult.success(withValue: mutableData)
+                })
+            })
         }
     }
     

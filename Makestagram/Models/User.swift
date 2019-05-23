@@ -16,6 +16,9 @@ class User: Codable {
     let uid: String
     let username: String
     var isFollowed = false
+    var followerCount: Int?
+    var followingCount: Int?
+    var postCount: Int?
     
     // MARK: - Init
     
@@ -26,11 +29,17 @@ class User: Codable {
     
     init?(snapshot: DataSnapshot) {
         guard let dict = snapshot.value as? [String : Any],
-            let username = dict["username"] as? String
+            let username = dict["username"] as? String,
+            let followerCount = dict["follower_count"] as? Int,
+            let followingCount = dict["following_count"] as? Int,
+            let postCount = dict["post_count"] as? Int
             else { return nil }
         
         self.uid = snapshot.key
         self.username = username
+        self.followerCount = followerCount
+        self.followingCount = followingCount
+        self.postCount = postCount
     }
     
     // MARK: - Singleton
