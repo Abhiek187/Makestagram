@@ -9,7 +9,15 @@
 import Foundation
 import UIKit
 
+protocol ProfileHeaderViewDelegate: class {
+    func didTapSettingsButton(_ button: UIButton, on headerView: ProfileHeaderView)
+}
+
 class ProfileHeaderView: UICollectionReusableView {
+    
+    // MARK: - Properties
+    
+    weak var delegate: ProfileHeaderViewDelegate?
     
     // MARK: - Subviews
     
@@ -31,6 +39,6 @@ class ProfileHeaderView: UICollectionReusableView {
     // MARK: - IBAction
     
     @IBAction func settingsButtonTapped(_ sender: UIButton) {
-        print("settings button tapped")
+        delegate?.didTapSettingsButton(sender, on: self)
     }
 }
