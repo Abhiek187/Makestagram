@@ -35,6 +35,8 @@ extension DatabaseReference {
         case chats(uid: String)
         case messages(key: String)
         
+        case flaggedPosts(key: String)
+        
         func asDatabaseReference() -> DatabaseReference {
             let root = Database.database().reference()
             
@@ -89,6 +91,9 @@ extension DatabaseReference {
                 
             case .messages(let key):
                 return root.child("messages").child(key)
+                
+            case .flaggedPosts(let key):
+                return root.child("flaggedPosts").child(key)
             }
         }
     }

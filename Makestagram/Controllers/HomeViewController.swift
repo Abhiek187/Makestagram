@@ -61,6 +61,32 @@ class HomeViewController: UIViewController {
         refreshControl.addTarget(self, action: #selector(reloadTimeline), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
+    
+    func handleOptionsButtonTap(from cell: PostHeaderCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        let post = posts[indexPath.section]
+        let poster = post.poster
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if poster.uid != User.current.uid {
+            let flagAction = UIAlertAction(title: "Report as Inappropriate", style: .default) { _ in
+                PostService.flag(post)
+                
+                let okAlert = UIAlertController(title: nil, message: "The post has been flagged.", preferredStyle: .alert)
+                okAlert.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(okAlert, animated: true)
+            }
+            
+            alertController.addAction(flagAction)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -81,6 +107,7 @@ extension HomeViewController: UITableViewDataSource {
         case 0:
             let cell: PostHeaderCell = tableView.dequeueReusableCell()
             cell.usernameLabel.text = post.poster.username
+            cell.didTapOptionsButtonForCell = handleOptionsButtonTap(from:)
             
             return cell
             

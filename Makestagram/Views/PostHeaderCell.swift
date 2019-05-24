@@ -12,6 +12,7 @@ import UIKit
 class PostHeaderCell: UITableViewCell {
     
     static let height: CGFloat = 54
+    var didTapOptionsButtonForCell: ((PostHeaderCell) -> Void)?
     
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -20,6 +21,6 @@ class PostHeaderCell: UITableViewCell {
     }
     
     @IBAction func optionsButtonTapped(_ sender: UIButton) {
-        print("options button tapped")
+        didTapOptionsButtonForCell?(self)
     }
 }
