@@ -149,3 +149,26 @@ extension ChatViewController {
         JSQSystemSoundPlayer.jsq_playMessageSentAlert()
     }
 }
+
+// MARK: - UITableViewDelegate
+
+extension ChatListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toChat", sender: self)
+    }
+}
+
+// MARK: - Navigation
+
+extension ChatListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "toChat",
+            let destination = segue.destination as? ChatViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            
+            destination.chat = chats[indexPath.row]
+        }
+    }
+}

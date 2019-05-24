@@ -40,6 +40,12 @@ class FindFriendsViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - IBActions
+    
+    @IBAction func dismissButtonTapped(_ sender: UIBarButtonItem) {
+        navigationController?.dismiss(animated: true)
+    }
 }
 
 // MARK: - UITableViewDataSource

@@ -160,7 +160,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Lcz-b5-eAr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AWf-Km-jja"/>
+                    <navigationItem key="navigationItem" id="AWf-Km-jja">
+                        <barButtonItem key="leftBarButtonItem" image="tab_find_friends_black" id="LTX-Tm-Icl">
+                            <connections>
+                                <segue destination="fA7-ty-gfk" kind="show" id="T5q-8b-KX1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="d87-kf-HvY" id="i4S-fy-7mo"/>
                     </connections>
@@ -168,6 +174,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s90-cW-W1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1902.8985507246377" y="-244.41964285714283"/>
+        </scene>
+        <!--FindFriends-->
+        <scene sceneID="Omu-0V-vex">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FindFriends" id="fA7-ty-gfk" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BHu-od-7dR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2600" y="-244"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HV9-Kd-lh1">
@@ -193,6 +207,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tab_find_friends_black" width="25" height="25"/>
         <image name="tab_profile_black" width="25" height="25"/>
     </resources>
 </document>

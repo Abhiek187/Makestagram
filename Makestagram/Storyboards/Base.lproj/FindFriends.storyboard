@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FindFriendsCell" rowHeight="71" id="vlH-ij-uD5" customClass="FindFriendsCell" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FindFriendsCell" rowHeight="71" id="vlH-ij-uD5" customClass="FindFriendsCell" customModule="Makestagram" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vlH-ij-uD5" id="3Rd-JM-5KW">
@@ -75,7 +76,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fuH-8N-vNf"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Find Friends" id="Wkb-lF-w6I"/>
+                    <navigationItem key="navigationItem" title="Find Friends" id="Wkb-lF-w6I">
+                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="sEc-Py-tCe">
+                            <connections>
+                                <action selector="dismissButtonTapped:" destination="YSj-jF-xsq" id="S7l-7S-5B7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="uWl-Xi-M4t" id="Eov-ii-qnS"/>
                     </connections>

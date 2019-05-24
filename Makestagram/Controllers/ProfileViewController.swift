@@ -22,6 +22,8 @@ class ProfileViewController: UIViewController {
     var profileRef: DatabaseReference?
     var authHandle: AuthStateDidChangeListenerHandle?
     
+    // MARK: - Subviews
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - VC Lifecycle
