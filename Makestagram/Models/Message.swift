@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseDatabase.FIRDataSnapshot
+import JSQMessagesViewController.JSQMessage
 
 class Message {
     
@@ -25,6 +26,13 @@ class Message {
                 "content" : content,
                 "timestamp" : timestamp.timeIntervalSince1970]
     }
+    
+    lazy var jsqMessageValue: JSQMessage = {
+        return JSQMessage(senderId: self.sender.uid,
+                          senderDisplayName: self.sender.username,
+                          date: self.timestamp,
+                          text: self.content)
+    }()
     
     // MARK: - Init
     

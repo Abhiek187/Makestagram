@@ -205,16 +205,4 @@ struct UserService {
             completion(ref, chats)
         })
     }
-    
-    static func observeMessages(forChatKey chatKey: String, completion: @escaping (DatabaseReference, Message?) -> Void) -> DatabaseHandle {
-        let messagesRef = DatabaseReference.toLocation(.messages(key: chatKey))
-        
-        return messagesRef.observe(.childAdded, with: { snapshot in
-            guard let message = Message(snapshot: snapshot) else {
-                return completion(messagesRef, nil)
-            }
-            
-            completion(messagesRef, message)
-        })
-    }
 }
