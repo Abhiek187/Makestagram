@@ -46,6 +46,13 @@
 		25AC900C229362DE007F24CB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC900B229362DE007F24CB /* Post.swift */; };
 		25AC900E229366D2007F24CB /* UIImage+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC900D229366D2007F24CB /* UIImage+Size.swift */; };
 		25AC901022936759007F24CB /* StorageReference+Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC900F22936759007F24CB /* StorageReference+Post.swift */; };
+		25DDB73522976DA800B3DE23 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB73422976DA800B3DE23 /* Chat.swift */; };
+		25DDB7372297710900B3DE23 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB7362297710900B3DE23 /* Message.swift */; };
+		25DDB739229772E300B3DE23 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB738229772E300B3DE23 /* ChatService.swift */; };
+		25DDB73C22977B5B00B3DE23 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DDB73E22977B5B00B3DE23 /* Chat.storyboard */; };
+		25DDB74022977BC100B3DE23 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB73F22977BC100B3DE23 /* ChatListViewController.swift */; };
+		25DDB742229780AD00B3DE23 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB741229780AD00B3DE23 /* ChatListCell.swift */; };
+		25DDB74422978E3800B3DE23 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB74322978E3800B3DE23 /* NewChatViewController.swift */; };
 		469F509057D52B44E314C14E /* Pods_Makestagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5ABFE752392A022738F9F /* Pods_Makestagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +99,13 @@
 		25AC900B229362DE007F24CB /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		25AC900D229366D2007F24CB /* UIImage+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Size.swift"; sourceTree = "<group>"; };
 		25AC900F22936759007F24CB /* StorageReference+Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StorageReference+Post.swift"; sourceTree = "<group>"; };
+		25DDB73422976DA800B3DE23 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		25DDB7362297710900B3DE23 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		25DDB738229772E300B3DE23 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
+		25DDB73D22977B5B00B3DE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
+		25DDB73F22977BC100B3DE23 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		25DDB741229780AD00B3DE23 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
+		25DDB74322978E3800B3DE23 /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		B7A5ABFE752392A022738F9F /* Pods_Makestagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Makestagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DC5EF2A67A09D4573918D7 /* Pods-Makestagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Makestagram.release.xcconfig"; path = "Target Support Files/Pods-Makestagram/Pods-Makestagram.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,6 +167,8 @@
 				25AC9001229340F2007F24CB /* FindFriendsViewController.swift */,
 				25AC900322934A4F007F24CB /* MainTabBarController.swift */,
 				25A20D99229627A600A41609 /* ProfileViewController.swift */,
+				25DDB73F22977BC100B3DE23 /* ChatListViewController.swift */,
+				25DDB74322978E3800B3DE23 /* NewChatViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +201,8 @@
 			children = (
 				2511F422229203E9004D5CA8 /* User.swift */,
 				25AC900B229362DE007F24CB /* Post.swift */,
+				25DDB73422976DA800B3DE23 /* Chat.swift */,
+				25DDB7362297710900B3DE23 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,6 +215,7 @@
 				25AC900922936148007F24CB /* PostService.swift */,
 				253A2E932294849800B54B6C /* LikeService.swift */,
 				253A2E95229499C100B54B6C /* FollowService.swift */,
+				25DDB738229772E300B3DE23 /* ChatService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -210,6 +229,7 @@
 				255DA7E722937E5E00EA6911 /* Home.storyboard */,
 				253A2E9B22949D6000B54B6C /* FindFriends.storyboard */,
 				25A20D9F22962A4700A41609 /* Profile.storyboard */,
+				25DDB73E22977B5B00B3DE23 /* Chat.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -233,6 +253,7 @@
 				253A2E9C22949EC700B54B6C /* FindFriendsCell.swift */,
 				25A20DA022962BB600A41609 /* PostThumbImageCell.swift */,
 				25A20DA222962F1A00A41609 /* ProfileHeaderView.swift */,
+				25DDB741229780AD00B3DE23 /* ChatListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -323,6 +344,7 @@
 				256118D622960D76008C12C4 /* open-sans in Resources */,
 				25A20D9D22962A4700A41609 /* Profile.storyboard in Resources */,
 				2511F41F2291E03A004D5CA8 /* Login.storyboard in Resources */,
+				25DDB73C22977B5B00B3DE23 /* Chat.storyboard in Resources */,
 				2511F4072291D14F004D5CA8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,12 +461,16 @@
 				25A20DA322962F1A00A41609 /* ProfileHeaderView.swift in Sources */,
 				2511F42922921673004D5CA8 /* UserService.swift in Sources */,
 				253A2E922294781700B54B6C /* PostActionCell.swift in Sources */,
+				25DDB742229780AD00B3DE23 /* ChatListCell.swift in Sources */,
 				253A2E942294849800B54B6C /* LikeService.swift in Sources */,
 				25AC900C229362DE007F24CB /* Post.swift in Sources */,
+				25DDB74022977BC100B3DE23 /* ChatListViewController.swift in Sources */,
 				255DA7EA229381DA00EA6911 /* PostImageCell.swift in Sources */,
+				25DDB7372297710900B3DE23 /* Message.swift in Sources */,
 				256118D42295D75E008C12C4 /* MGPaginationHelper.swift in Sources */,
 				253A2E9D22949EC700B54B6C /* FindFriendsCell.swift in Sources */,
 				25A20DA122962BB600A41609 /* PostThumbImageCell.swift in Sources */,
+				25DDB74422978E3800B3DE23 /* NewChatViewController.swift in Sources */,
 				25AC900E229366D2007F24CB /* UIImage+Size.swift in Sources */,
 				25A20D9822961B1800A41609 /* UIFont+Utility.swift in Sources */,
 				25AC9000229340E5007F24CB /* HomeViewController.swift in Sources */,
@@ -459,6 +485,8 @@
 				2511F4022291D14F004D5CA8 /* AppDelegate.swift in Sources */,
 				253A2E902294753300B54B6C /* PostHeaderCell.swift in Sources */,
 				2511F42D22922A5A004D5CA8 /* Storyboard+Utility.swift in Sources */,
+				25DDB73522976DA800B3DE23 /* Chat.swift in Sources */,
+				25DDB739229772E300B3DE23 /* ChatService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,6 +532,15 @@
 				25A20D9E22962A4700A41609 /* Base */,
 			);
 			name = Profile.storyboard;
+			path = "/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards";
+			sourceTree = "<absolute>";
+		};
+		25DDB73E22977B5B00B3DE23 /* Chat.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				25DDB73D22977B5B00B3DE23 /* Base */,
+			);
+			name = Chat.storyboard;
 			path = "/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards";
 			sourceTree = "<absolute>";
 		};

@@ -157,7 +157,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Wdj-Wz-K8m"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Makestagram" id="xin-Ww-8kq"/>
+                    <navigationItem key="navigationItem" title="Makestagram" id="xin-Ww-8kq">
+                        <barButtonItem key="rightBarButtonItem" image="btn_options_black" id="X6u-d9-W46">
+                            <connections>
+                                <segue destination="hcP-cP-cDj" kind="presentation" id="dTf-2z-uXC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="d9d-In-UJa" id="sBu-3s-Jzy"/>
                     </connections>
@@ -187,6 +193,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc4-3C-gEj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="195.6521739130435" y="-646.20535714285711"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="Y4l-2B-BYW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" id="hcP-cP-cDj" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5TW-c3-U0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1937.68115942029" y="-646.20535714285711"/>
         </scene>
     </scenes>
     <resources>

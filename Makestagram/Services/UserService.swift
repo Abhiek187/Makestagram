@@ -164,4 +164,57 @@ struct UserService {
             })
         })
     }
+    
+    static func following(for user: User = User.current, completion: @escaping ([User]) -> Void) {
+        let followingRef = DatabaseReference.toLocation(.following(uid: user.uid))
+        followingRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let followingDict = snapshot.value as? [String : Bool] else {
+                return completion([])
+            }
+            
+            var following = [User]()
+            let dispatchGroup = DispatchGroup()
+            
+            for uid in followingDict.keys {
+                dispatchGroup.enter()
+                
+                show(forUID: uid) { user in
+                    if let user = user {
+                        following.append(user)
+                    }
+                    
+                    dispatchGroup.leave()
+                }
+            }
+            
+            dispatchGroup.notify(queue: .main) {
+                completion(following)
+            }
+        })
+    }
+    
+    static func observeChats(for user: User = User.current, withCompletion completion: @escaping (DatabaseReference, [Chat]) -> Void) -> DatabaseHandle {
+        let ref = DatabaseReference.toLocation(.chats(uid: user.uid))
+        
+        return ref.observe(.value, with: { (snapshot) in
+            guard let snapshot = snapshot.children.allObjects as? [DataSnapshot] else {
+                return completion(ref, [])
+            }
+            
+            let chats = snapshot.compactMap(Chat.init)
+            completion(ref, chats)
+        })
+    }
+    
+    static func observeMessages(forChatKey chatKey: String, completion: @escaping (DatabaseReference, Message?) -> Void) -> DatabaseHandle {
+        let messagesRef = DatabaseReference.toLocation(.messages(key: chatKey))
+        
+        return messagesRef.observe(.childAdded, with: { snapshot in
+            guard let message = Message(snapshot: snapshot) else {
+                return completion(messagesRef, nil)
+            }
+            
+            completion(messagesRef, message)
+        })
+    }
 }

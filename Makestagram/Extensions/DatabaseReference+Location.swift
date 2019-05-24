@@ -26,10 +26,14 @@ extension DatabaseReference {
         case timeline(uid: String)
         
         case followers(uid: String)
+        case following(uid: String)
         
         case likes(postKey: String, currentUID: String)
         case isLiked(postKey: String)
         case likesCount(posterUID: String, postKey: String)
+        
+        case chats(uid: String)
+        case messages(key: String)
         
         func asDatabaseReference() -> DatabaseReference {
             let root = Database.database().reference()
@@ -68,6 +72,9 @@ extension DatabaseReference {
             case .followers(let uid):
                 return root.child("followers").child(uid)
                 
+            case .following(let uid):
+                return root.child("following").child(uid)
+                
             case let .likes(postKey, currentUID):
                 return root.child("postLikes").child(postKey).child(currentUID)
                 
@@ -76,6 +83,12 @@ extension DatabaseReference {
                 
             case let .likesCount(posterUID, postKey):
                 return root.child("posts").child(posterUID).child(postKey).child("likes_count")
+                
+            case .chats(let uid):
+                return root.child("chats").child(uid)
+                
+            case .messages(let key):
+                return root.child("messages").child(key)
             }
         }
     }
