@@ -19,24 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dyw-EA-r7V">
-                                <rect key="frame" x="20" y="88" width="374" height="774"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" rowHeight="71" id="ISe-aI-S6U" customClass="ChatListCell" customModule="Makestagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="374" height="71"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ISe-aI-S6U" id="JQ8-zn-wqW">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="70.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="crazytaco: hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBb-rv-jOG">
-                                                    <rect key="frame" x="35" y="39" width="304" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="crazytaco: hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBb-rv-jOG">
+                                                    <rect key="frame" x="35" y="37" width="344" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="crazytaco, rainbowunicorn123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4j-Vt-lLc">
-                                                    <rect key="frame" x="35" y="10" width="304" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="crazytaco, rainbowunicorn123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4j-Vt-lLc">
+                                                    <rect key="frame" x="35" y="11" width="344" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -48,6 +48,7 @@
                                                 <constraint firstItem="kBb-rv-jOG" firstAttribute="leading" secondItem="JQ8-zn-wqW" secondAttribute="leadingMargin" constant="15" id="Y1K-5s-tPG"/>
                                                 <constraint firstItem="s4j-Vt-lLc" firstAttribute="leading" secondItem="JQ8-zn-wqW" secondAttribute="leadingMargin" constant="15" id="htb-Qm-hqj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="kBb-rv-jOG" secondAttribute="trailing" constant="15" id="wpl-ka-5Zx"/>
+                                                <constraint firstItem="s4j-Vt-lLc" firstAttribute="top" secondItem="JQ8-zn-wqW" secondAttribute="topMargin" id="yXG-Wd-zde"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -64,10 +65,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="Dyw-EA-r7V" secondAttribute="bottom" id="a7Z-5j-vLx"/>
-                            <constraint firstItem="Dyw-EA-r7V" firstAttribute="top" secondItem="PIb-6c-Z4n" secondAttribute="topMargin" id="bfE-oL-Ubm"/>
-                            <constraint firstItem="Dyw-EA-r7V" firstAttribute="leading" secondItem="PIb-6c-Z4n" secondAttribute="leadingMargin" id="cpo-pX-kL1"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Dyw-EA-r7V" secondAttribute="trailing" id="vhQ-4F-fCe"/>
+                            <constraint firstItem="NR9-Cr-gTL" firstAttribute="bottom" secondItem="Dyw-EA-r7V" secondAttribute="bottom" id="a7Z-5j-vLx"/>
+                            <constraint firstItem="Dyw-EA-r7V" firstAttribute="top" secondItem="NR9-Cr-gTL" secondAttribute="top" id="bfE-oL-Ubm"/>
+                            <constraint firstItem="Dyw-EA-r7V" firstAttribute="leading" secondItem="NR9-Cr-gTL" secondAttribute="leading" id="cpo-pX-kL1"/>
+                            <constraint firstItem="NR9-Cr-gTL" firstAttribute="trailing" secondItem="Dyw-EA-r7V" secondAttribute="trailing" id="vhQ-4F-fCe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NR9-Cr-gTL"/>
                     </view>

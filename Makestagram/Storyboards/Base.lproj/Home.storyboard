@@ -112,8 +112,8 @@
                                                     <color key="textColor" red="0.60392156862745094" green="0.60392156862745094" blue="0.60392156862745094" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-Td-joO">
-                                                    <rect key="frame" x="62.5" y="45" width="296.5" height="0.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5R8-Td-joO">
+                                                    <rect key="frame" x="63" y="45" width="297" height="0.5"/>
                                                     <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="0.5" id="mcH-Ia-wQD"/>
@@ -121,17 +121,18 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="5R8-Td-joO" firstAttribute="leading" secondItem="s2f-XF-aPR" secondAttribute="leadingMargin" constant="43" id="CND-pr-nKP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="5R8-Td-joO" secondAttribute="trailing" constant="-6" id="CkW-Uu-VHz"/>
                                                 <constraint firstItem="Gnf-52-aMZ" firstAttribute="top" secondItem="s2f-XF-aPR" secondAttribute="top" id="D1E-QO-yfj"/>
                                                 <constraint firstItem="fjL-r5-fuQ" firstAttribute="leading" secondItem="TbY-oL-Erg" secondAttribute="trailing" id="K43-Vc-sH5"/>
+                                                <constraint firstItem="Gnf-52-aMZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fjL-r5-fuQ" secondAttribute="trailing" constant="8" symbolic="YES" id="MjU-yV-bxc"/>
                                                 <constraint firstAttribute="bottom" secondItem="5R8-Td-joO" secondAttribute="bottom" id="Moh-xu-kzK"/>
                                                 <constraint firstAttribute="trailing" secondItem="Gnf-52-aMZ" secondAttribute="trailing" constant="15" id="Nlh-0h-0BS"/>
-                                                <constraint firstAttribute="trailing" secondItem="5R8-Td-joO" secondAttribute="trailing" constant="15" id="VTx-3M-a7y"/>
                                                 <constraint firstAttribute="bottom" secondItem="Gnf-52-aMZ" secondAttribute="bottom" id="Vfg-PR-kaU"/>
                                                 <constraint firstAttribute="bottom" secondItem="TbY-oL-Erg" secondAttribute="bottom" id="Wr1-zm-sr7"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="fjL-r5-fuQ" secondAttribute="bottom" id="fhc-PH-z2h"/>
                                                 <constraint firstItem="TbY-oL-Erg" firstAttribute="top" secondItem="s2f-XF-aPR" secondAttribute="top" id="ihG-ML-lui"/>
                                                 <constraint firstItem="TbY-oL-Erg" firstAttribute="leading" secondItem="s2f-XF-aPR" secondAttribute="leading" constant="2" id="kcF-T0-YK5"/>
-                                                <constraint firstItem="5R8-Td-joO" firstAttribute="leading" secondItem="s2f-XF-aPR" secondAttribute="trailing" constant="15" id="oql-j9-kmv"/>
                                                 <constraint firstItem="fjL-r5-fuQ" firstAttribute="top" secondItem="s2f-XF-aPR" secondAttribute="topMargin" id="w6C-m6-4U3"/>
                                             </constraints>
                                         </tableViewCellContentView>
