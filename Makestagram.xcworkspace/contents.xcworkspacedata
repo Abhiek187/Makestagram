@@ -2,15 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards/Chat.storyboard">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards/Profile.storyboard">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards/FindFriends.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:Makestagram.xcodeproj">
    </FileRef>
    <FileRef
