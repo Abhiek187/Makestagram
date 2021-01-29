@@ -4,23 +4,20 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.4.0)
   - AppAuth/Core (1.4.0)
   - AppAuth/ExternalUserAgent (1.4.0)
-  - FacebookCore (0.9.0):
-    - FBSDKCoreKit (~> 5.0)
-  - FacebookLogin (0.9.0):
-    - FacebookCore (~> 0.9.0)
-    - FBSDKCoreKit (~> 5.0)
-    - FBSDKLoginKit (~> 5.0)
-  - FBSDKCoreKit (5.15.1):
-    - FBSDKCoreKit/Basics (= 5.15.1)
-    - FBSDKCoreKit/Core (= 5.15.1)
-  - FBSDKCoreKit/Basics (5.15.1)
-  - FBSDKCoreKit/Core (5.15.1):
+  - FBSDKCoreKit (9.0.0):
+    - FBSDKCoreKit/Basics (= 9.0.0)
+    - FBSDKCoreKit/Core (= 9.0.0)
+  - FBSDKCoreKit/Basics (9.0.0)
+  - FBSDKCoreKit/Core (9.0.0):
     - FBSDKCoreKit/Basics
-  - FBSDKLoginKit (5.15.1):
-    - FBSDKLoginKit/Login (= 5.15.1)
-  - FBSDKLoginKit/Login (5.15.1):
-    - FBSDKCoreKit (~> 5.0)
-  - Firebase (2.5.1)
+  - FBSDKLoginKit (9.0.0):
+    - FBSDKLoginKit/Login (= 9.0.0)
+  - FBSDKLoginKit/Login (9.0.0):
+    - FBSDKCoreKit (~> 9.0.0)
+  - FBSDKShareKit (9.0.0):
+    - FBSDKShareKit/Share (= 9.0.0)
+  - FBSDKShareKit/Share (9.0.0):
+    - FBSDKCoreKit (~> 9.0.0)
   - Firebase/Auth (7.5.0):
     - Firebase/CoreOnly
     - FirebaseAuth (~> 7.5.0)
@@ -69,19 +66,15 @@ PODS:
   - FirebaseStorage (7.5.0):
     - FirebaseCore (~> 7.0)
     - GTMSessionFetcher/Core (~> 1.4)
-  - FirebaseUI/Auth (10.0.1):
-    - Firebase/Auth
+  - FirebaseUI/Auth (10.0.2):
+    - Firebase/Auth (>= 7.2.0)
     - GoogleUtilities/UserDefaults
-  - FirebaseUI/AuthHelper (0.3.2):
-    - Firebase (~> 2.2)
-  - FirebaseUI/Email (10.0.1):
+  - FirebaseUI/Email (10.0.2):
     - FirebaseUI/Auth
-  - FirebaseUI/Facebook (0.3.2):
-    - FBSDKCoreKit
-    - FBSDKLoginKit
-    - Firebase (~> 2.2)
-    - FirebaseUI/AuthHelper
-  - FirebaseUI/Google (10.0.1):
+  - FirebaseUI/Facebook (10.0.2):
+    - FBSDKLoginKit (~> 9.0)
+    - FirebaseUI/Auth
+  - FirebaseUI/Google (10.0.2):
     - FirebaseUI/Auth
     - GoogleSignIn (~> 5.0)
   - GoogleAppMeasurement (7.5.0):
@@ -126,9 +119,7 @@ PODS:
   - JSQMessagesViewController (7.3.5):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
-  - Kingfisher (5.15.8):
-    - Kingfisher/Core (= 5.15.8)
-  - Kingfisher/Core (5.15.8)
+  - Kingfisher (6.0.1)
   - leveldb-library (1.22)
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
@@ -138,8 +129,9 @@ PODS:
   - PromisesObjC (1.2.12)
 
 DEPENDENCIES:
-  - FacebookCore
-  - FacebookLogin
+  - FBSDKCoreKit
+  - FBSDKLoginKit
+  - FBSDKShareKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -150,15 +142,14 @@ DEPENDENCIES:
   - FirebaseUI/Google
   - GoogleSignIn
   - JSQMessagesViewController
-  - Kingfisher (~> 5.0)
+  - Kingfisher
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - AppAuth
-    - FacebookCore
-    - FacebookLogin
     - FBSDKCoreKit
     - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -183,10 +174,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
-  FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
-  FacebookLogin: 6cee9fd6e1fe976fe8f7eec199e27b28b14f5d63
-  FBSDKCoreKit: 1d5acf7c9d7a2f92bb1a242dc60cae5b7adb91df
-  FBSDKLoginKit: f1ea8026a58b52d30c9f2e6a58ca7d813619fb83
+  FBSDKCoreKit: ac6cc500b8e104bb9a4dd20b1527b5d199123c2e
+  FBSDKLoginKit: e9b6542fdee322333502ab497f628b011dce7d78
+  FBSDKShareKit: e9a5d805d0831489a09dd14fa6fc8ba20d6355f3
   Firebase: fd5e4d2b756292c6e7ee6faac1eb320225d6e97e
   FirebaseAnalytics: 00b7f74571d346ee1ffb9bf0a2e6f2ffff222bcc
   FirebaseAuth: 13585612f93d671962682007ea8ded1d60ef0762
@@ -195,7 +185,7 @@ SPEC CHECKSUMS:
   FirebaseDatabase: ee59c5f39e49dfa6c06af6f4e541a88d9271625a
   FirebaseInstallations: a46ae59915f0931e18814164849cd0354bea24ed
   FirebaseStorage: 9cbdff7bdcdc8289c8efc20945fc91c1066d0b43
-  FirebaseUI: c93b7b76034bce07c90d9c53068bd4d25712bbb3
+  FirebaseUI: 59db3d833773f985550897d54ceb811ba37fb9a5
   GoogleAppMeasurement: 65a1071e5f52f63ab03d0a4d814a54fd762d885a
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
@@ -204,11 +194,11 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  Kingfisher: adde87a4f74f6a3845395769354efff593581740
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: c34bae105a1dc015fb551c9563370806fe2e7e56
+PODFILE CHECKSUM: 0b8c934bf0f71f086ed2fa5750a7777c2b989bc6
 
 COCOAPODS: 1.10.1
