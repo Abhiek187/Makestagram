@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol FindFriendsCellDelegate: class {
+protocol FindFriendsCellDelegate: AnyObject {
     func didTapFollowButton(_ followButton: UIButton, on cell: FindFriendsCell)
 }
 

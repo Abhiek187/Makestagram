@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol ProfileHeaderViewDelegate: class {
+protocol ProfileHeaderViewDelegate: AnyObject {
     func didTapSettingsButton(_ button: UIButton, on headerView: ProfileHeaderView)
 }
 

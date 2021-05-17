@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol PostActionCellDelegate: class {
+protocol PostActionCellDelegate: AnyObject {
     func didTapLikeButton(_ likeButton: UIButton, on cell: PostActionCell)
 }
 
