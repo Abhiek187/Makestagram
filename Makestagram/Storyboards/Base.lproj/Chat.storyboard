@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TbL-2v-KjU">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="TbL-2v-KjU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,10 +22,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatListCell" rowHeight="71" id="ISe-aI-S6U" customClass="ChatListCell" customModule="Makestagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="71"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ISe-aI-S6U" id="JQ8-zn-wqW">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="crazytaco: hello world" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBb-rv-jOG">
@@ -63,14 +62,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="NR9-Cr-gTL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="NR9-Cr-gTL" firstAttribute="bottom" secondItem="Dyw-EA-r7V" secondAttribute="bottom" id="a7Z-5j-vLx"/>
                             <constraint firstItem="Dyw-EA-r7V" firstAttribute="top" secondItem="NR9-Cr-gTL" secondAttribute="top" id="bfE-oL-Ubm"/>
                             <constraint firstItem="Dyw-EA-r7V" firstAttribute="leading" secondItem="NR9-Cr-gTL" secondAttribute="leading" id="cpo-pX-kL1"/>
                             <constraint firstItem="NR9-Cr-gTL" firstAttribute="trailing" secondItem="Dyw-EA-r7V" secondAttribute="trailing" id="vhQ-4F-fCe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="NR9-Cr-gTL"/>
                     </view>
                     <navigationItem key="navigationItem" title="Messages" id="5Vb-YL-lzP">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="KaU-Un-5Ek">
@@ -106,14 +105,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="NewChatUserCell" textLabel="OFT-MY-4Cn" style="IBUITableViewCellStyleDefault" id="Cji-3s-4UT" customClass="NewChatUserCell" customModule="Makestagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cji-3s-4UT" id="iVk-qQ-MKI">
-                                            <rect key="frame" x="0.0" y="0.0" width="370" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="373.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OFT-MY-4Cn">
-                                                    <rect key="frame" x="20" y="0.0" width="350" height="43.5"/>
+                                                    <rect key="frame" x="20" y="0.0" width="345.5" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -129,14 +128,14 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="24E-Ra-TIC"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="xhB-XF-lrH" firstAttribute="top" secondItem="24E-Ra-TIC" secondAttribute="top" id="3c8-3C-fkZ"/>
                             <constraint firstItem="xhB-XF-lrH" firstAttribute="leading" secondItem="24E-Ra-TIC" secondAttribute="leading" id="3mk-Qp-bng"/>
                             <constraint firstItem="24E-Ra-TIC" firstAttribute="trailing" secondItem="xhB-XF-lrH" secondAttribute="trailing" id="NBO-wJ-SsK"/>
                             <constraint firstItem="24E-Ra-TIC" firstAttribute="bottom" secondItem="xhB-XF-lrH" secondAttribute="bottom" id="WuL-Fj-zI5"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="24E-Ra-TIC"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Message" id="jkJ-l3-5sU">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="Pqt-Ck-ICy">
@@ -162,8 +161,8 @@
                     <view key="view" contentMode="scaleToFill" id="q0S-gp-1Kr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="kJE-a9-W3J"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="7fK-9r-rLY">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="Xh9-BQ-Q8C">
@@ -197,6 +196,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="caq-8P-vk3"/>
+        <segue reference="He0-fJ-Uh0"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

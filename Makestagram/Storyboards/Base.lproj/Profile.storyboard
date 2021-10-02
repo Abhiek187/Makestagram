@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Aj1-Dh-LoS">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Aj1-Dh-LoS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -63,7 +62,7 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <state key="normal" title="Settings">
-                                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="titleColor" systemColor="labelColor"/>
                                             </state>
                                             <connections>
                                                 <action selector="settingsButtonTapped:" destination="QuM-2B-GBx" eventType="touchUpInside" id="ifG-Wo-0U6"/>
@@ -151,14 +150,14 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Lcz-b5-eAr"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
                             <constraint firstItem="Lcz-b5-eAr" firstAttribute="bottom" secondItem="d87-kf-HvY" secondAttribute="bottom" id="D09-D7-wby"/>
                             <constraint firstItem="d87-kf-HvY" firstAttribute="leading" secondItem="Lcz-b5-eAr" secondAttribute="leading" id="LN7-YG-NJC"/>
                             <constraint firstItem="d87-kf-HvY" firstAttribute="top" secondItem="Lcz-b5-eAr" secondAttribute="top" id="Xpy-tC-5Hy"/>
                             <constraint firstItem="Lcz-b5-eAr" firstAttribute="trailing" secondItem="d87-kf-HvY" secondAttribute="trailing" id="ojb-ov-fv8"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Lcz-b5-eAr"/>
                     </view>
                     <navigationItem key="navigationItem" id="AWf-Km-jja">
                         <barButtonItem key="leftBarButtonItem" image="tab_find_friends_black" id="LTX-Tm-Icl">
@@ -187,10 +186,9 @@
         <scene sceneID="HV9-Kd-lh1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Aj1-Dh-LoS" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="tab_profile_black" id="Y5f-t8-d64">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-7"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="tab_profile_black" id="Y5f-t8-d64"/>
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rnX-uh-2bw">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -209,5 +207,11 @@
     <resources>
         <image name="tab_find_friends_black" width="25" height="25"/>
         <image name="tab_profile_black" width="25" height="25"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

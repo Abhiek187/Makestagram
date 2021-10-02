@@ -59,6 +59,15 @@ class ChatViewController: JSQMessagesViewController {
         // 3. remove avatars
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
+        
+        // 4. change background color to match theme
+        if #available(iOS 13.0, *) {
+            collectionView.backgroundColor = .systemBackground
+            inputToolbar.contentView.textView.backgroundColor = .systemBackground
+            inputToolbar.contentView.textView.textColor = .label
+        } else {
+            // Fallback on earlier versions
+        }
     }
     
     func tryObservingMessages() {

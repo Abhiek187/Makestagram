@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,7 +23,6 @@
 		253A2E922294781700B54B6C /* PostActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253A2E912294781700B54B6C /* PostActionCell.swift */; };
 		253A2E942294849800B54B6C /* LikeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253A2E932294849800B54B6C /* LikeService.swift */; };
 		253A2E96229499C100B54B6C /* FollowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253A2E95229499C100B54B6C /* FollowService.swift */; };
-		253A2E9922949D6000B54B6C /* FindFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 253A2E9B22949D6000B54B6C /* FindFriends.storyboard */; };
 		253A2E9D22949EC700B54B6C /* FindFriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 253A2E9C22949EC700B54B6C /* FindFriendsCell.swift */; };
 		255DA7E822937EFF00EA6911 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 255DA7E722937E5E00EA6911 /* Home.storyboard */; };
 		255DA7EA229381DA00EA6911 /* PostImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255DA7E9229381DA00EA6911 /* PostImageCell.swift */; };
@@ -34,7 +33,6 @@
 		25A20D9622961A4300A41609 /* UIColor+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20D9522961A4300A41609 /* UIColor+Utility.swift */; };
 		25A20D9822961B1800A41609 /* UIFont+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20D9722961B1800A41609 /* UIFont+Utility.swift */; };
 		25A20D9A229627A600A41609 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20D99229627A600A41609 /* ProfileViewController.swift */; };
-		25A20D9D22962A4700A41609 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25A20D9F22962A4700A41609 /* Profile.storyboard */; };
 		25A20DA122962BB600A41609 /* PostThumbImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DA022962BB600A41609 /* PostThumbImageCell.swift */; };
 		25A20DA322962F1A00A41609 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A20DA222962F1A00A41609 /* ProfileHeaderView.swift */; };
 		25AC9000229340E5007F24CB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC8FFF229340E5007F24CB /* HomeViewController.swift */; };
@@ -51,11 +49,13 @@
 		25DDB73522976DA800B3DE23 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB73422976DA800B3DE23 /* Chat.swift */; };
 		25DDB7372297710900B3DE23 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB7362297710900B3DE23 /* Message.swift */; };
 		25DDB739229772E300B3DE23 /* ChatService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB738229772E300B3DE23 /* ChatService.swift */; };
-		25DDB73C22977B5B00B3DE23 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25DDB73E22977B5B00B3DE23 /* Chat.storyboard */; };
 		25DDB74022977BC100B3DE23 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB73F22977BC100B3DE23 /* ChatListViewController.swift */; };
 		25DDB742229780AD00B3DE23 /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB741229780AD00B3DE23 /* ChatListCell.swift */; };
 		25DDB74422978E3800B3DE23 /* NewChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB74322978E3800B3DE23 /* NewChatViewController.swift */; };
 		469F509057D52B44E314C14E /* Pods_Makestagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A5ABFE752392A022738F9F /* Pods_Makestagram.framework */; };
+		F1360FCD2707CE7300A28F32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FC72707CE7300A28F32 /* Chat.storyboard */; };
+		F1360FCE2707CE7300A28F32 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FC92707CE7300A28F32 /* Profile.storyboard */; };
+		F1360FCF2707CE7300A28F32 /* FindFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FCB2707CE7300A28F32 /* FindFriends.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,7 +78,6 @@
 		253A2E912294781700B54B6C /* PostActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostActionCell.swift; sourceTree = "<group>"; };
 		253A2E932294849800B54B6C /* LikeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeService.swift; sourceTree = "<group>"; };
 		253A2E95229499C100B54B6C /* FollowService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowService.swift; sourceTree = "<group>"; };
-		253A2E9A22949D6000B54B6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FindFriends.storyboard; sourceTree = "<group>"; };
 		253A2E9C22949EC700B54B6C /* FindFriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindFriendsCell.swift; sourceTree = "<group>"; };
 		255DA7E622937E5E00EA6911 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		255DA7E9229381DA00EA6911 /* PostImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCell.swift; sourceTree = "<group>"; };
@@ -89,7 +88,6 @@
 		25A20D9522961A4300A41609 /* UIColor+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utility.swift"; sourceTree = "<group>"; };
 		25A20D9722961B1800A41609 /* UIFont+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utility.swift"; sourceTree = "<group>"; };
 		25A20D99229627A600A41609 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		25A20D9E22962A4700A41609 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		25A20DA022962BB600A41609 /* PostThumbImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThumbImageCell.swift; sourceTree = "<group>"; };
 		25A20DA222962F1A00A41609 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		25AC8FFF229340E5007F24CB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -106,12 +104,14 @@
 		25DDB73422976DA800B3DE23 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		25DDB7362297710900B3DE23 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		25DDB738229772E300B3DE23 /* ChatService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatService.swift; sourceTree = "<group>"; };
-		25DDB73D22977B5B00B3DE23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
 		25DDB73F22977BC100B3DE23 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		25DDB741229780AD00B3DE23 /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		25DDB74322978E3800B3DE23 /* NewChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChatViewController.swift; sourceTree = "<group>"; };
 		B7A5ABFE752392A022738F9F /* Pods_Makestagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Makestagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DC5EF2A67A09D4573918D7 /* Pods-Makestagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Makestagram.release.xcconfig"; path = "Target Support Files/Pods-Makestagram/Pods-Makestagram.release.xcconfig"; sourceTree = "<group>"; };
+		F1360FC82707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
+		F1360FCA2707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
+		F1360FCC2707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FindFriends.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,9 +232,9 @@
 				2511F40A2291D150004D5CA8 /* LaunchScreen.storyboard */,
 				253691EB229C74C20044ADBB /* Login.storyboard */,
 				255DA7E722937E5E00EA6911 /* Home.storyboard */,
-				253A2E9B22949D6000B54B6C /* FindFriends.storyboard */,
-				25A20D9F22962A4700A41609 /* Profile.storyboard */,
-				25DDB73E22977B5B00B3DE23 /* Chat.storyboard */,
+				F1360FCB2707CE7300A28F32 /* FindFriends.storyboard */,
+				F1360FC92707CE7300A28F32 /* Profile.storyboard */,
+				F1360FC72707CE7300A28F32 /* Chat.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -343,14 +343,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2511F40C2291D150004D5CA8 /* LaunchScreen.storyboard in Resources */,
+				F1360FCD2707CE7300A28F32 /* Chat.storyboard in Resources */,
 				2511F4142291D7C8004D5CA8 /* GoogleService-Info.plist in Resources */,
 				2511F4092291D150004D5CA8 /* Assets.xcassets in Resources */,
-				253A2E9922949D6000B54B6C /* FindFriends.storyboard in Resources */,
 				255DA7E822937EFF00EA6911 /* Home.storyboard in Resources */,
+				F1360FCF2707CE7300A28F32 /* FindFriends.storyboard in Resources */,
+				F1360FCE2707CE7300A28F32 /* Profile.storyboard in Resources */,
 				256118D622960D76008C12C4 /* open-sans in Resources */,
-				25A20D9D22962A4700A41609 /* Profile.storyboard in Resources */,
 				253691E9229C74C20044ADBB /* Login.storyboard in Resources */,
-				25DDB73C22977B5B00B3DE23 /* Chat.storyboard in Resources */,
 				2511F4072291D14F004D5CA8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -489,15 +489,6 @@
 			name = Login.storyboard;
 			sourceTree = "<group>";
 		};
-		253A2E9B22949D6000B54B6C /* FindFriends.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				253A2E9A22949D6000B54B6C /* Base */,
-			);
-			name = FindFriends.storyboard;
-			path = "/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards";
-			sourceTree = "<absolute>";
-		};
 		255DA7E722937E5E00EA6911 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -506,23 +497,29 @@
 			name = Home.storyboard;
 			sourceTree = "<group>";
 		};
-		25A20D9F22962A4700A41609 /* Profile.storyboard */ = {
+		F1360FC72707CE7300A28F32 /* Chat.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				25A20D9E22962A4700A41609 /* Base */,
-			);
-			name = Profile.storyboard;
-			path = "/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards";
-			sourceTree = "<absolute>";
-		};
-		25DDB73E22977B5B00B3DE23 /* Chat.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				25DDB73D22977B5B00B3DE23 /* Base */,
+				F1360FC82707CE7300A28F32 /* Base */,
 			);
 			name = Chat.storyboard;
-			path = "/Users/basantachaudhuri/Desktop/Make School Projects/Makestagram/Makestagram/Storyboards";
-			sourceTree = "<absolute>";
+			sourceTree = "<group>";
+		};
+		F1360FC92707CE7300A28F32 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1360FCA2707CE7300A28F32 /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
+		F1360FCB2707CE7300A28F32 /* FindFriends.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F1360FCC2707CE7300A28F32 /* Base */,
+			);
+			name = FindFriends.storyboard;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 

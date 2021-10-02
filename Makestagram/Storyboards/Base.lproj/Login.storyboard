@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8T0-2i-eMg">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8T0-2i-eMg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,16 +21,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="265"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Dc1-2U-Nci">
-                                        <rect key="frame" x="87" y="80.5" width="240" height="104.5"/>
+                                        <rect key="frame" x="87.5" y="80.5" width="239.5" height="104.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Makestagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w2J-tb-oh6">
-                                                <rect key="frame" x="12" y="0.0" width="216" height="43.5"/>
+                                                <rect key="frame" x="12" y="0.0" width="215.5" height="43.5"/>
                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Bold" family="Apple SD Gothic Neo" pointSize="36"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up to see photos and videos from your friends." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="240" translatesAutoresizingMaskIntoConstraints="NO" id="5Ox-CA-WDf">
-                                                <rect key="frame" x="0.0" y="68.5" width="240" height="36"/>
+                                                <rect key="frame" x="0.0" y="68.5" width="239.5" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -59,7 +58,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="yxO-BB-2hG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CKm-cQ-x3e" firstAttribute="top" secondItem="UUo-mf-8Rg" secondAttribute="top" id="A6e-d7-4Xd"/>
                             <constraint firstItem="CKm-cQ-x3e" firstAttribute="leading" secondItem="yxO-BB-2hG" secondAttribute="leading" id="Cfa-sU-RKM"/>
@@ -68,7 +68,6 @@
                             <constraint firstItem="BJx-dR-WnV" firstAttribute="top" secondItem="CKm-cQ-x3e" secondAttribute="bottom" constant="25" id="WQ7-aI-SSE"/>
                             <constraint firstItem="yxO-BB-2hG" firstAttribute="trailing" secondItem="BJx-dR-WnV" secondAttribute="trailing" constant="35" id="Z0p-xb-kuB"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="yxO-BB-2hG"/>
                     </view>
                     <navigationItem key="navigationItem" id="XUg-rv-N6D"/>
                     <connections>
@@ -109,7 +108,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3tb-D8-Ffi"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -134,13 +132,13 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="v4b-Wm-A3x"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Xpe-kK-QNx" secondAttribute="trailing" constant="35" id="Vc4-mK-DXo"/>
                             <constraint firstItem="Xpe-kK-QNx" firstAttribute="leading" secondItem="v4b-Wm-A3x" secondAttribute="leading" constant="35" id="alg-3c-IXP"/>
                             <constraint firstItem="Xpe-kK-QNx" firstAttribute="top" secondItem="v4b-Wm-A3x" secondAttribute="top" constant="45" id="wLR-4Z-Vq7"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="v4b-Wm-A3x"/>
                     </view>
                     <connections>
                         <outlet property="nextButton" destination="CfT-3G-vRx" id="qXp-su-h30"/>
@@ -169,4 +167,9 @@
             <point key="canvasLocation" x="76.811594202898561" y="60.9375"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
