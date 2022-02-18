@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
     // MARK: - Properties
     @IBOutlet weak var loginButton: UIButton!
     
-    // MARK: - VC Lifecyle
+    // MARK: - VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
