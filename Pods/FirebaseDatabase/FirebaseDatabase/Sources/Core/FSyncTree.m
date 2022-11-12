@@ -15,7 +15,7 @@
  */
 
 #import "FirebaseDatabase/Sources/Core/FSyncTree.h"
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 #import "FirebaseDatabase/Sources/Core/FCompoundHash.h"
 #import "FirebaseDatabase/Sources/Core/FListenProvider.h"
 #import "FirebaseDatabase/Sources/Core/FQueryParams.h"
@@ -722,6 +722,57 @@ static const NSUInteger kFSizeThresholdForCompoundHash = 1024;
     } else {
         return @[];
     }
+}
+
+/** Returns a non-empty cache node if one exists. Otherwise returns null. */
+- (FIndexedNode *)persistenceServerCache:(FQuerySpec *)querySpec {
+    FCacheNode *cacheNode =
+        [self.persistenceManager serverCacheForQuery:querySpec];
+    if (cacheNode == nil || cacheNode.node.isEmpty) {
+        return nil;
+    }
+    return cacheNode.indexedNode;
+}
+
+- (id<FNode>)getServerValue:(FQuerySpec *)query {
+    __block id<FNode> serverCacheNode = nil;
+    __block FSyncPoint *targetSyncPoint = nil;
+    [self.syncPointTree
+        forEachOnPath:query.path
+           whileBlock:^BOOL(FPath *pathToSyncPoint, FSyncPoint *syncPoint) {
+             FPath *relativePath = [FPath relativePathFrom:pathToSyncPoint
+                                                        to:query.path];
+             serverCacheNode =
+                 [syncPoint completeEventCacheAtPath:relativePath];
+             targetSyncPoint = syncPoint;
+             return serverCacheNode == nil;
+           }];
+
+    if (targetSyncPoint == nil) {
+        targetSyncPoint = [[FSyncPoint alloc]
+            initWithPersistenceManager:self.persistenceManager];
+        self.syncPointTree = [self.syncPointTree setValue:targetSyncPoint
+                                                   atPath:[query path]];
+    } else {
+        serverCacheNode =
+            serverCacheNode != nil
+                ? serverCacheNode
+                : [targetSyncPoint completeServerCacheAtPath:[FPath empty]];
+    }
+
+    FIndexedNode *indexed = [FIndexedNode
+        indexedNodeWithNode:serverCacheNode != nil ? serverCacheNode
+                                                   : [FEmptyNode emptyNode]
+                      index:query.index];
+    FCacheNode *serverCache =
+        [[FCacheNode alloc] initWithIndexedNode:indexed
+                             isFullyInitialized:serverCacheNode != nil
+                                     isFiltered:NO];
+    FView *view = [targetSyncPoint
+            getView:query
+        writesCache:[_pendingWriteTree childWritesForPath:[query path]]
+        serverCache:serverCache];
+    return [view completeEventCache];
 }
 
 /**

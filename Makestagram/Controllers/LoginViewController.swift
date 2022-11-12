@@ -9,8 +9,10 @@
 import Foundation
 import UIKit
 import FirebaseAuth
-import FirebaseUI
 import FirebaseDatabase
+import FirebaseEmailAuthUI
+import FirebaseFacebookAuthUI
+import FirebaseGoogleAuthUI
 
 typealias FIRUser = FirebaseAuth.User
 
