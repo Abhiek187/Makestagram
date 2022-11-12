@@ -49,6 +49,7 @@
 #define maybe_bridge(x) (x)
 #endif
 
+#if !TARGET_OS_WATCH
 typedef enum  {
     SROpCodeTextFrame = 0x1,
     SROpCodeBinaryFrame = 0x2,
@@ -506,8 +507,8 @@ static __strong NSData *CRLFCRLF;
     }
 
     [self _performDelegateBlock:^{
-        if ([self.delegate respondsToSelector:@selector(webSocketDidOpen:)]) {
-            [self.delegate webSocketDidOpen:self];
+        if ([self.delegate respondsToSelector:@selector(webSocketDidOpen)]) {
+            [self.delegate webSocketDidOpen];
         };
     }];
 }
@@ -542,7 +543,8 @@ static __strong NSData *CRLFCRLF;
                                                           _url.host, _url.port] : _url.host));
 
     NSMutableData *keyBytes = [[NSMutableData alloc] initWithLength:16];
-    int result = SecRandomCopyBytes(kSecRandomDefault, keyBytes.length, keyBytes.mutableBytes);
+    int __unused result =
+        SecRandomCopyBytes(kSecRandomDefault, keyBytes.length, keyBytes.mutableBytes);
     assert(result == 0);
     _secKey = [FSRUtilities base64EncodedStringFromData:keyBytes];
     assert([_secKey length] == 24);
@@ -687,7 +689,14 @@ static __strong NSData *CRLFCRLF;
 
             NSUInteger usedLength = 0;
 
-            BOOL success = [reason getBytes:(char *)mutablePayload.mutableBytes + sizeof(uint16_t) maxLength:payload.length - sizeof(uint16_t) usedLength:&usedLength encoding:NSUTF8StringEncoding options:NSStringEncodingConversionExternalRepresentation range:NSMakeRange(0, reason.length) remainingRange:&remainingRange];
+            BOOL __unused success =
+                [reason getBytes:(char *)mutablePayload.mutableBytes + sizeof(uint16_t)
+                       maxLength:payload.length - sizeof(uint16_t)
+                      usedLength:&usedLength
+                        encoding:NSUTF8StringEncoding
+                         options:NSStringEncodingConversionExternalRepresentation
+                           range:NSMakeRange(0, reason.length)
+                  remainingRange:&remainingRange];
 
             assert(success);
             assert(remainingRange.length == 0);
@@ -1054,7 +1063,7 @@ static const uint8_t SRPayloadLenMask   = 0x7F;
             [self _handleFrameHeader:header curData:self->_currentFrameData];
         } else {
             [self _addConsumerWithDataLength:extra_bytes_needed callback:^(FSRWebSocket *self, NSData *data) {
-                size_t mapped_size = data.length;
+                size_t __unused mapped_size = data.length;
                 const void *mapped_buffer = data.bytes;
                 size_t offset = 0;
 
@@ -1382,9 +1391,12 @@ static const size_t SRFrameHeaderOverhead = 32;
     frame_buffer[0] = SRFinMask | opcode;
 
     BOOL useMask = YES;
+
+#endif  // !TARGET_OS_WATCH
 #ifdef NOMASK
     useMask = NO;
 #endif
+#if !TARGET_OS_WATCH
 
     if (useMask) {
     // set the mask and header
@@ -1421,7 +1433,8 @@ static const size_t SRFrameHeaderOverhead = 32;
         }
     } else {
         uint8_t *mask_key = frame_buffer + frame_buffer_size;
-        int result = SecRandomCopyBytes(kSecRandomDefault, sizeof(uint32_t), (uint8_t *)mask_key);
+        int __unused result =
+                  SecRandomCopyBytes(kSecRandomDefault, sizeof(uint32_t), (uint8_t *)mask_key);
         assert(result == 0);
         frame_buffer_size += sizeof(uint32_t);
 
@@ -1559,11 +1572,13 @@ static const size_t SRFrameHeaderOverhead = 32;
 
         case NSStreamEventHasBytesAvailable: {
             SRFastLog(@"NSStreamEventHasBytesAvailable %@", aStream);
-            const NSUInteger bufferSize = 2048;
-            uint8_t buffer[bufferSize];
+
+            #define FSRWEB_SOCKET_BUFFER_SIZE 2048
+            uint8_t buffer[FSRWEB_SOCKET_BUFFER_SIZE];
+
 
             while (_inputStream.hasBytesAvailable) {
-                NSInteger bytes_read = [_inputStream read:buffer maxLength:bufferSize];
+                NSInteger bytes_read = [_inputStream read:buffer maxLength:FSRWEB_SOCKET_BUFFER_SIZE];
 
                 if (bytes_read > 0) {
                     [_readBuffer appendBytes:buffer length:bytes_read];
@@ -1571,7 +1586,7 @@ static const size_t SRFrameHeaderOverhead = 32;
                     [self _failWithError:_inputStream.streamError];
                 }
 
-                if (bytes_read != bufferSize) {
+                if (bytes_read != FSRWEB_SOCKET_BUFFER_SIZE) {
                     break;
                 }
             };
@@ -1793,6 +1808,7 @@ static NSRunLoop *networkRunLoop = nil;
     dispatch_once(&onceToken, ^{
         networkThread = [[_FSRRunLoopThread alloc] init];
         networkThread.name = @"com.squareup.SocketRocket.NetworkThread";
+        networkThread.qualityOfService = NSQualityOfServiceUserInitiated;
         [networkThread start];
         networkRunLoop = networkThread.runLoop;
     });
@@ -1865,3 +1881,4 @@ static NSRunLoop *networkRunLoop = nil;
 }
 
 @end
+#endif  // TARGET_OS_WATCH

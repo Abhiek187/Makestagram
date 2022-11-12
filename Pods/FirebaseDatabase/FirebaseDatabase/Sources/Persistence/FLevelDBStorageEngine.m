@@ -18,7 +18,7 @@
 
 #import "FirebaseDatabase/Sources/Persistence/FLevelDBStorageEngine.h"
 
-#import "FirebaseCore/Sources/Private/FirebaseCoreInternal.h"
+#import "FirebaseCore/Extension/FirebaseCoreInternal.h"
 #import "FirebaseDatabase/Sources/Core/FQueryParams.h"
 #import "FirebaseDatabase/Sources/Core/FWriteRecord.h"
 #import "FirebaseDatabase/Sources/Persistence/FPendingPut.h"
@@ -267,11 +267,16 @@ static NSString *trackedQueryKeysKey(NSUInteger trackedQueryId, NSString *key) {
 }
 
 + (NSString *)firebaseDir {
-#if TARGET_OS_IOS || TARGET_OS_TV
+#if TARGET_OS_IOS || TARGET_OS_WATCH
     NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(
         NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDir = [dirPaths objectAtIndex:0];
     return [documentsDir stringByAppendingPathComponent:@"firebase"];
+#elif TARGET_OS_TV
+    NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(
+        NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cachesDir = [dirPaths objectAtIndex:0];
+    return [cachesDir stringByAppendingPathComponent:@"firebase"];
 #elif TARGET_OS_OSX
     return [NSHomeDirectory() stringByAppendingPathComponent:@".firebase"];
 #endif

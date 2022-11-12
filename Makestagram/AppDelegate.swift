@@ -8,7 +8,8 @@
 
 import UIKit
 import Firebase
-import FirebaseUI
+import FirebaseAuthUI
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,18 +21,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
+        // Initialize Facebook SDK
+        ApplicationDelegate.shared.application(
+            application,
+            didFinishLaunchingWithOptions: launchOptions
+        )
+        
         configureInitialRootViewController(for: window)
         
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
+        let sourceApplication = options[.sourceApplication] as? String
         if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
             return true
         }
         
         // other URL handling goes here
+        ApplicationDelegate.shared.application(
+            app,
+            open: url,
+            sourceApplication: sourceApplication,
+            annotation: options[.annotation]
+        )
         
         return false
     }

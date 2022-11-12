@@ -312,20 +312,12 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
             options.onDataReceived = (options.onDataReceived ?? []) + [ImageLoadingProgressSideEffect(block)]
         }
 
-        if let provider = ImageProgressiveProvider(options, refresh: { image in
-            self.base.image = image
-        }) {
-            options.onDataReceived = (options.onDataReceived ?? []) + [provider]
-        }
-
-        options.onDataReceived?.forEach {
-            $0.onShouldApply = { issuedIdentifier == self.taskIdentifier }
-        }
-
         let task = KingfisherManager.shared.retrieveImage(
             with: source,
             options: options,
             downloadTaskUpdated: { mutatingSelf.imageTask = $0 },
+            progressiveImageSetter: { self.base.image = $0 },
+            referenceTaskIdentifierChecker: { issuedIdentifier == self.taskIdentifier },
             completionHandler: { result in
                 CallbackQueue.mainCurrentOrAsync.execute {
                     maybeIndicator?.stopAnimatingView()
@@ -360,6 +352,7 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
 
                     case .failure:
                         if let image = options.onFailureImage {
+                            mutatingSelf.placeholder = nil
                             self.base.image = image
                         }
                         completionHandler?(result)
@@ -383,7 +376,10 @@ extension KingfisherWrapper where Base: KFCrossPlatformImageView {
         switch options.transition {
         case .none:
             return false
-        #if !os(macOS)
+        #if os(macOS)
+        case .fade: // Fade is only a placeholder for SwiftUI on macOS.
+            return false
+        #else
         default:
             if options.forceTransition { return true }
             if cacheType == .none { return true }
