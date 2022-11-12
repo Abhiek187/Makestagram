@@ -37,6 +37,8 @@
 	<string>1</string>
 	<key>FacebookAppID</key>
 	<string>430764811080499</string>
+	<key>FacebookClientToken</key>
+	<string>d52cf16e9fc3e47950eff6081817c574</string>
 	<key>FacebookDisplayName</key>
 	<string>Make School app</string>
 	<key>LSApplicationQueriesSchemes</key>
