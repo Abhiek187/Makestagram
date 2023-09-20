@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FBSDKShareKit
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FBSDKShareKit
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import FBSDKCoreKit
 import FBSDKCoreKit_Basics
 @_exported import FBSDKShareKit
@@ -10,6 +11,7 @@ import Social
 import Swift
 import UIKit
 import _Concurrency
+import _StringProcessing
 @objcMembers @objc(FBSDKAppInviteContent) final public class AppInviteContent : ObjectiveC.NSObject {
   @objc(FBSDKAppInviteDestination) public enum Destination : Swift.Int {
     case facebook
@@ -61,10 +63,10 @@ extension FBSDKShareKit.AppInviteContent : FBSDKShareKit.SharingValidatable {
     @objc get
   }
   @_Concurrency.MainActor(unsafe) @objc override final public var isImplicitlyDisabled: Swift.Bool {
-    @_Concurrency.MainActor(unsafe) @objc get
+    @objc get
   }
   @objc @_Concurrency.MainActor(unsafe) final public func configureButton()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
@@ -83,10 +85,10 @@ extension FBSDKShareKit.AppInviteContent : FBSDKShareKit.SharingValidatable {
     @objc get
   }
   @_Concurrency.MainActor(unsafe) @objc override final public var isImplicitlyDisabled: Swift.Bool {
-    @_Concurrency.MainActor(unsafe) @objc get
+    @objc get
   }
   @objc @_Concurrency.MainActor(unsafe) final public func configureButton()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
 }
@@ -161,9 +163,9 @@ extension FBSDKShareKit.ShareDialog {
   @objc dynamic public func validate() throws
 }
 extension FBSDKShareKit.ShareDialog : FBSDKCoreKit.WebDialogDelegate {
-  @objc dynamic public func webDialog(_ webDialog: FBSDKCoreKit.WebDialog, didCompleteWithResults results: [Swift.String : Any])
-  @objc dynamic public func webDialog(_ webDialog: FBSDKCoreKit.WebDialog, didFailWithError error: Swift.Error)
-  @objc dynamic public func webDialogDidCancel(_ webDialog: FBSDKCoreKit.WebDialog)
+  @objc dynamic public func webDialog(_ webDialog: FBSDKCoreKit._WebDialog, didCompleteWithResults results: [Swift.String : Any])
+  @objc dynamic public func webDialog(_ webDialog: FBSDKCoreKit._WebDialog, didFailWithError error: Swift.Error)
+  @objc dynamic public func webDialogDidCancel(_ webDialog: FBSDKCoreKit._WebDialog)
 }
 extension FBSDKShareKit.ShareDialog {
   @objc(FBSDKShareDialogMode) public enum Mode : Swift.UInt, Swift.CustomStringConvertible {
@@ -323,7 +325,6 @@ extension FBSDKShareKit.ShareVideoContent : FBSDKShareKit.SharingValidatable {
   @objc var shouldFailOnDataError: Swift.Bool { get set }
   @objc(validateWithError:) func validate() throws
 }
-@available(tvOS, unavailable)
 @objc(FBSDKSharingButton) public protocol SharingButton {
   @objc var shareContent: FBSDKShareKit.SharingContent? { get set }
 }

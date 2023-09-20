@@ -374,12 +374,15 @@ static void callInMainThreadWithAuthDataResultAndError(
     _phoneNumber = phoneNumber;
     _metadata = metadata ?: [[FIRUserMetadata alloc] initWithCreationDate:nil lastSignInDate:nil];
     _tenantID = tenantID;
-    // The `heartbeatLogger` will be set later via a property update.
+    // The `heartbeatLogger` and `appCheck` will be set later via a property update.
     _requestConfiguration = [[FIRAuthRequestConfiguration alloc] initWithAPIKey:APIKey
                                                                           appID:appID
-                                                                heartbeatLogger:nil];
+                                                                           auth:_auth
+                                                                heartbeatLogger:nil
+                                                                       appCheck:nil];
 #if TARGET_OS_IOS
     _multiFactor = multiFactor ?: [[FIRMultiFactor alloc] init];
+    _multiFactor.user = self;
 #endif
   }
   return self;
@@ -847,16 +850,20 @@ static void callInMainThreadWithAuthDataResultAndError(
 - (void)reauthenticateWithProvider:(id<FIRFederatedAuthProvider>)provider
                         UIDelegate:(nullable id<FIRAuthUIDelegate>)UIDelegate
                         completion:(nullable FIRAuthDataResultCallback)completion {
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   dispatch_async(FIRAuthGlobalWorkQueue(), ^{
     [provider getCredentialWithUIDelegate:UIDelegate
                                completion:^(FIRAuthCredential *_Nullable credential,
                                             NSError *_Nullable error) {
+                                 if (error) {
+                                   completion(nil, error);
+                                   return;
+                                 }
                                  [self reauthenticateWithCredential:credential
                                                          completion:completion];
                                }];
   });
-#endif  // TARGET_OS_IOS
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 }
 
 - (nullable NSString *)refreshToken {
@@ -1176,6 +1183,8 @@ static void callInMainThreadWithAuthDataResultAndError(
         FIRAuthRequestConfiguration *requestConfiguration = self.auth.requestConfiguration;
         FIRSignInWithGameCenterRequest *gameCenterRequest = [[FIRSignInWithGameCenterRequest alloc]
                 initWithPlayerID:gameCenterCredential.playerID
+                    teamPlayerID:gameCenterCredential.teamPlayerID
+                    gamePlayerID:gameCenterCredential.gamePlayerID
                     publicKeyURL:gameCenterCredential.publicKeyURL
                        signature:gameCenterCredential.signature
                             salt:gameCenterCredential.salt
@@ -1330,15 +1339,19 @@ static void callInMainThreadWithAuthDataResultAndError(
 - (void)linkWithProvider:(id<FIRFederatedAuthProvider>)provider
               UIDelegate:(nullable id<FIRAuthUIDelegate>)UIDelegate
               completion:(nullable FIRAuthDataResultCallback)completion {
-#if TARGET_OS_IOS
+#if TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
   dispatch_async(FIRAuthGlobalWorkQueue(), ^{
     [provider getCredentialWithUIDelegate:UIDelegate
                                completion:^(FIRAuthCredential *_Nullable credential,
                                             NSError *_Nullable error) {
+                                 if (error) {
+                                   completion(nil, error);
+                                   return;
+                                 }
                                  [self linkWithCredential:credential completion:completion];
                                }];
   });
-#endif  // TARGET_OS_IOS
+#endif  // TARGET_OS_IOS && (!defined(TARGET_OS_VISION) || !TARGET_OS_VISION)
 }
 
 - (void)unlinkFromProvider:(NSString *)provider

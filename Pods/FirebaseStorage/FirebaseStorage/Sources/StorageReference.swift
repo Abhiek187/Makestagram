@@ -140,35 +140,12 @@ import Foundation
       putMetadata.path = path
       putMetadata.name = (path as NSString).lastPathComponent as String
     }
-    let fetcherService = storage.fetcherServiceForApp
     let task = StorageUploadTask(reference: self,
-                                 service: fetcherService,
+                                 service: storage.fetcherServiceForApp,
                                  queue: storage.dispatchQueue,
                                  data: uploadData,
                                  metadata: putMetadata)
-
-    if let completion = completion {
-      var completed = false
-      let callbackQueue = fetcherService.callbackQueue ?? DispatchQueue.main
-
-      task.observe(.success) { snapshot in
-        callbackQueue.async {
-          if !completed {
-            completed = true
-            completion(snapshot.metadata, nil)
-          }
-        }
-      }
-      task.observe(.failure) { snapshot in
-        callbackQueue.async {
-          if !completed {
-            completed = true
-            completion(nil, snapshot.error)
-          }
-        }
-      }
-    }
-    task.enqueue()
+    startAndObserveUploadTask(task: task, completion: completion)
     return task
   }
 
@@ -217,35 +194,12 @@ import Foundation
       putMetadata.path = path
       putMetadata.name = (path as NSString).lastPathComponent as String
     }
-    let fetcherService = storage.fetcherServiceForApp
     let task = StorageUploadTask(reference: self,
-                                 service: fetcherService,
+                                 service: storage.fetcherServiceForApp,
                                  queue: storage.dispatchQueue,
                                  file: fileURL,
                                  metadata: putMetadata)
-
-    if let completion = completion {
-      var completed = false
-      let callbackQueue = fetcherService.callbackQueue ?? DispatchQueue.main
-
-      task.observe(.success) { snapshot in
-        callbackQueue.async {
-          if !completed {
-            completed = true
-            completion(snapshot.metadata, nil)
-          }
-        }
-      }
-      task.observe(.failure) { snapshot in
-        callbackQueue.async {
-          if !completed {
-            completed = true
-            completion(nil, snapshot.error)
-          }
-        }
-      }
-    }
-    task.enqueue()
+    startAndObserveUploadTask(task: task, completion: completion)
     return task
   }
 
@@ -271,34 +225,28 @@ import Foundation
                                    queue: storage.dispatchQueue,
                                    file: nil)
 
-    var completed = false
+    task.completionData = completion
     let callbackQueue = fetcherService.callbackQueue ?? DispatchQueue.main
 
     task.observe(.success) { snapshot in
+      let error = self.checkSizeOverflow(task: snapshot.task, maxSize: maxSize)
       callbackQueue.async {
-        if !completed {
-          completed = true
-          completion(task.downloadData, nil)
+        if let completion = task.completionData {
+          let data = error == nil ? task.downloadData : nil
+          completion(data, error)
+          task.completionData = nil
         }
       }
     }
     task.observe(.failure) { snapshot in
       callbackQueue.async {
-        if !completed {
-          completed = true
-          completion(nil, snapshot.error)
-        }
+        task.completionData?(nil, snapshot.error)
+        task.completionData = nil
       }
     }
     task.observe(.progress) { snapshot in
-      let task = snapshot.task
-      if task.progress.totalUnitCount > maxSize || task.progress.completedUnitCount > maxSize {
-        let error = StorageErrorCode.error(withCode: .downloadSizeExceeded,
-                                           infoDictionary: [
-                                             "totalSize": task.progress.totalUnitCount,
-                                             "maxAllowedSize": maxSize,
-                                           ])
-        (task as? StorageDownloadTask)?.cancel(withError: error)
+      if let error = self.checkSizeOverflow(task: snapshot.task, maxSize: maxSize) {
+        task.cancel(withError: error)
       }
     }
     task.enqueue()
@@ -369,23 +317,19 @@ import Foundation
                                    file: fileURL)
 
     if let completion = completion {
-      var completed = false
+      task.completionURL = completion
       let callbackQueue = fetcherService.callbackQueue ?? DispatchQueue.main
 
       task.observe(.success) { snapshot in
         callbackQueue.async {
-          if !completed {
-            completed = true
-            completion(fileURL, nil)
-          }
+          task.completionURL?(fileURL, nil)
+          task.completionURL = nil
         }
       }
       task.observe(.failure) { snapshot in
         callbackQueue.async {
-          if !completed {
-            completed = true
-            completion(nil, snapshot.error)
-          }
+          task.completionURL?(nil, snapshot.error)
+          task.completionURL = nil
         }
       }
     }
@@ -694,5 +638,41 @@ import Foundation
   init(storage: Storage, path: StoragePath) {
     self.storage = storage
     self.path = path
+  }
+
+  /**
+   * For maxSize API, return an error if the size is exceeded.
+   */
+  private func checkSizeOverflow(task: StorageTask, maxSize: Int64) -> NSError? {
+    if task.progress.totalUnitCount > maxSize || task.progress.completedUnitCount > maxSize {
+      return StorageErrorCode.error(withCode: .downloadSizeExceeded,
+                                    infoDictionary: [
+                                      "totalSize": task.progress.totalUnitCount,
+                                      "maxAllowedSize": maxSize,
+                                    ])
+    }
+    return nil
+  }
+
+  private func startAndObserveUploadTask(task: StorageUploadTask,
+                                         completion: ((_: StorageMetadata?, _: Error?) -> Void)?) {
+    if let completion = completion {
+      task.completionMetadata = completion
+      let callbackQueue = storage.fetcherServiceForApp.callbackQueue ?? DispatchQueue.main
+
+      task.observe(.success) { snapshot in
+        callbackQueue.async {
+          task.completionMetadata?(snapshot.metadata, nil)
+          task.completionMetadata = nil
+        }
+      }
+      task.observe(.failure) { snapshot in
+        callbackQueue.async {
+          task.completionMetadata?(nil, snapshot.error)
+          task.completionMetadata = nil
+        }
+      }
+    }
+    task.enqueue()
   }
 }
