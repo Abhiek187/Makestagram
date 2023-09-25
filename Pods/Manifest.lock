@@ -182,7 +182,7 @@ DEPENDENCIES:
   - Kingfisher
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - AppAuth
     - FBAEMKit
     - FBSDKCoreKit
@@ -254,6 +254,6 @@ SPEC CHECKSUMS:
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: 7245a2aefa5a7dad1447db16ef386fa670a3b275
+PODFILE CHECKSUM: e59ddc792797b4fb3364ca96917bbd421478cd5f
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.13.0
