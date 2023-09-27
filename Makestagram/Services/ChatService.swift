@@ -16,10 +16,10 @@ struct ChatService {
             membersDict[uid] = true
         }
         
-        let lastMessage = "\(message.sender.username): \(message.content)"
+        let lastMessage = "\(message.sender.displayName): \(message.content)"
         chat.lastMessage = lastMessage
-        let lastMessageSent = message.timestamp.timeIntervalSince1970
-        chat.lastMessageSent = message.timestamp
+        let lastMessageSent = message.sentDate.timeIntervalSince1970
+        chat.lastMessageSent = message.sentDate
         
         let chatDict: [String : Any] = ["title" : chat.title,
                                         "memberHash" : chat.memberHash,
@@ -32,14 +32,16 @@ struct ChatService {
         
         var multiUpdateValue = [String : Any]()
         
-        for uid in chat.memberUIDs {
-            multiUpdateValue["chats/\(uid)/\(chatRef.key ?? "unknown")"] = chatDict
+        if let chatKey = chatRef.key {
+            for uid in chat.memberUIDs {
+                multiUpdateValue["chats/\(uid)/\(chatKey)"] = chatDict
+            }
+            
+            let messagesRef = DatabaseReference.toLocation(.messages(key: chatKey)).childByAutoId()
+            let messageKey = messagesRef.key
+            
+            multiUpdateValue["messages/\(chatKey)/\(messageKey ?? "unknown")"] = message.dictValue
         }
-        
-        let messagesRef = DatabaseReference.toLocation(.messages(key: chatRef.key!)).childByAutoId()
-        let messageKey = messagesRef.key
-        
-        multiUpdateValue["messages/\(chatRef.key ?? "unknown")/\(messageKey ?? "unknown")"] = message.dictValue
         
         let rootRef = DatabaseReference.toLocation(.root)
         rootRef.updateChildValues(multiUpdateValue) { (error, ref) in
@@ -78,9 +80,9 @@ struct ChatService {
         var multiUpdateValue = [String : Any]()
         
         for uid in chat.memberUIDs {
-            let lastMessage = "\(message.sender.username): \(message.content)"
+            let lastMessage = "\(message.sender.displayName): \(message.content)"
             multiUpdateValue["chats/\(uid)/\(chatKey)/lastMessage"] = lastMessage
-            multiUpdateValue["chats/\(uid)/\(chatKey)/lastMessageSent"] = message.timestamp.timeIntervalSince1970
+            multiUpdateValue["chats/\(uid)/\(chatKey)/lastMessageSent"] = message.sentDate.timeIntervalSince1970
         }
         
         let messagesRef = DatabaseReference.toLocation(.messages(key: chatKey)).childByAutoId()

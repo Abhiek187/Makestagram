@@ -56,7 +56,7 @@ extension FindFriendsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell") as! FindFriendsCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FindFriendsCell") as? FindFriendsCell else { return UITableViewCell() }
         cell.delegate = self
         configure(cell: cell, atIndexPath: indexPath)
         

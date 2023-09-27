@@ -63,7 +63,7 @@ extension NewChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewChatUserCell") as! NewChatUserCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "NewChatUserCell") as? NewChatUserCell else { return UITableViewCell() }
         configureCell(cell, at: indexPath)
         
         return cell

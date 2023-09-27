@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,6 +56,8 @@
 		F1360FCD2707CE7300A28F32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FC72707CE7300A28F32 /* Chat.storyboard */; };
 		F1360FCE2707CE7300A28F32 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FC92707CE7300A28F32 /* Profile.storyboard */; };
 		F1360FCF2707CE7300A28F32 /* FindFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FCB2707CE7300A28F32 /* FindFriends.storyboard */; };
+		F1CB4CA52AC3AF0200FAA8DE /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB4CA42AC3AF0200FAA8DE /* Sender.swift */; };
+		F1CB4CA82AC4DF9E00FAA8DE /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1CB4CA72AC4DF9E00FAA8DE /* MessageKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +114,7 @@
 		F1360FC82707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
 		F1360FCA2707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		F1360FCC2707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FindFriends.storyboard; sourceTree = "<group>"; };
+		F1CB4CA42AC3AF0200FAA8DE /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				048F46A348EE9381F73FE4CC /* Pods_Makestagram.framework in Frameworks */,
+				F1CB4CA82AC4DF9E00FAA8DE /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +212,7 @@
 				25AC900B229362DE007F24CB /* Post.swift */,
 				25DDB73422976DA800B3DE23 /* Chat.swift */,
 				25DDB7362297710900B3DE23 /* Message.swift */,
+				F1CB4CA42AC3AF0200FAA8DE /* Sender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -299,6 +304,9 @@
 			dependencies = (
 			);
 			name = Makestagram;
+			packageProductDependencies = (
+				F1CB4CA72AC4DF9E00FAA8DE /* MessageKit */,
+			);
 			productName = Makestagram;
 			productReference = 2511F3FE2291D14E004D5CA8 /* Makestagram.app */;
 			productType = "com.apple.product-type.application";
@@ -328,6 +336,9 @@
 				Base,
 			);
 			mainGroup = 2511F3F52291D14E004D5CA8;
+			packageReferences = (
+				F1CB4CA62AC4DF9E00FAA8DE /* XCRemoteSwiftPackageReference "MessageKit" */,
+			);
 			productRefGroup = 2511F3FF2291D14E004D5CA8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -417,6 +428,7 @@
 				25DDB742229780AD00B3DE23 /* ChatListCell.swift in Sources */,
 				253A2E942294849800B54B6C /* LikeService.swift in Sources */,
 				25AC900C229362DE007F24CB /* Post.swift in Sources */,
+				F1CB4CA52AC3AF0200FAA8DE /* Sender.swift in Sources */,
 				25DDB74022977BC100B3DE23 /* ChatListViewController.swift in Sources */,
 				255DA7EA229381DA00EA6911 /* PostImageCell.swift in Sources */,
 				25DDB7372297710900B3DE23 /* Message.swift in Sources */,
@@ -561,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -619,7 +631,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -683,6 +695,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F1CB4CA62AC4DF9E00FAA8DE /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F1CB4CA72AC4DF9E00FAA8DE /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1CB4CA62AC4DF9E00FAA8DE /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2511F3F62291D14E004D5CA8 /* Project object */;
 }

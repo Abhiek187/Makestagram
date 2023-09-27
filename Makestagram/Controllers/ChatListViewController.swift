@@ -58,12 +58,35 @@ extension ChatListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell") as! ChatListCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell") as? ChatListCell else { return UITableViewCell() }
         
         let chat = chats[indexPath.row]
         cell.titleLabel.text = chat.title
         cell.lastMessageLabel.text = chat.lastMessage
         
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ChatListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toChat", sender: self)
+    }
+}
+
+// MARK: - Navigation
+
+extension ChatListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "toChat",
+            let destination = segue.destination as? ChatViewController,
+            let indexPath = tableView.indexPathForSelectedRow {
+            
+            destination.chat = chats[indexPath.row]
+        }
     }
 }

@@ -15,7 +15,7 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Properties
     
-    var user: User!
+    var user: User? = nil
     var posts = [Post]()
     
     var profileHandle: DatabaseHandle = 0
@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         user = user ?? User.current
+        guard let user else { return }
         navigationItem.title = user.username
         
         profileHandle = UserService.observeProfile(for: user) { [unowned self] (ref, user, posts) in
@@ -68,7 +69,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as! PostThumbImageCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostThumbImageCell", for: indexPath) as? PostThumbImageCell else { return UICollectionViewCell() }
         
         let post = posts[indexPath.row]
         let imageURL = URL(string: post.imageURL)
@@ -82,17 +83,17 @@ extension ProfileViewController: UICollectionViewDataSource {
             fatalError("Unexpected element kind.")
         }
         
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ProfileHeaderView", for: indexPath) as! ProfileHeaderView
+        guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ProfileHeaderView", for: indexPath) as? ProfileHeaderView else { return UICollectionReusableView() }
         
         headerView.delegate = self
         
-        let postCount = user.postCount ?? 0
+        let postCount = user?.postCount ?? 0
         headerView.postCountLabel.text = "\(postCount)"
         
-        let followerCount = user.followerCount ?? 0
+        let followerCount = user?.followerCount ?? 0
         headerView.followerCountLabel.text = "\(followerCount)"
         
-        let followingCount = user.followingCount ?? 0
+        let followingCount = user?.followingCount ?? 0
         headerView.followingCountLabel.text = "\(followingCount)"
         
         return headerView

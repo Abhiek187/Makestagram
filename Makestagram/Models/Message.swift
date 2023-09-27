@@ -8,31 +8,25 @@
 
 import Foundation
 import FirebaseDatabase.FIRDataSnapshot
-import JSQMessagesViewController.JSQMessage
+import MessageKit
 
-class Message {
-    
+class Message: MessageType {
     // MARK: - Properties
     
-    var key: String?
-    let content: String
-    let timestamp: Date
-    let sender: User
+    var sender: SenderType
+    var messageId: String
+    var sentDate: Date
+    var kind: MessageKind
+    var content: String
+    
     var dictValue: [String : Any] {
-        let userDict = ["username" : sender.username,
-                        "uid" : sender.uid]
+        let userDict = ["username" : sender.displayName,
+                        "uid" : sender.senderId]
         
         return ["sender" : userDict,
                 "content" : content,
-                "timestamp" : timestamp.timeIntervalSince1970]
+                "timestamp" : sentDate.timeIntervalSince1970]
     }
-    
-    lazy var jsqMessageValue: JSQMessage = {
-        return JSQMessage(senderId: self.sender.uid,
-                          senderDisplayName: self.sender.username,
-                          date: self.timestamp,
-                          text: self.content)
-    }()
     
     // MARK: - Init
     
@@ -45,15 +39,18 @@ class Message {
             let username = userDict["username"] as? String
             else { return nil }
         
-        self.key = snapshot.key
+        self.sender = Sender(senderId: uid, displayName: username)
+        self.messageId = snapshot.key
+        self.sentDate = Date(timeIntervalSince1970: timestamp)
+        self.kind = .text(content)
         self.content = content
-        self.timestamp = Date(timeIntervalSince1970: timestamp)
-        self.sender = User(uid: uid, username: username)
     }
     
     init(content: String) {
+        self.sender = Sender(senderId: User.current.uid, displayName: User.current.username)
+        self.messageId = UUID().uuidString
+        self.sentDate = Date()
+        self.kind = .text(content)
         self.content = content
-        self.timestamp = Date()
-        self.sender = User.current
     }
 }

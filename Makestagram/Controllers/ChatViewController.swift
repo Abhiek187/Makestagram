@@ -8,66 +8,42 @@
 
 import Foundation
 import UIKit
-import JSQMessagesViewController
+import MessageKit
+import InputBarAccessoryView
 import FirebaseDatabase
 
-class ChatViewController: JSQMessagesViewController {
-    
+class ChatViewController: MessagesViewController, MessagesLayoutDelegate {
     // MARK: - Properties
     
-    var chat: Chat!
+    var chat: Chat? = nil
     var messages = [Message]()
     var messagesHandle: DatabaseHandle = 0
     var messagesRef: DatabaseReference?
-    
-    var outgoingBubbleImageView: JSQMessagesBubbleImage = {
-        guard let bubbleImageFactory = JSQMessagesBubbleImageFactory() else {
-            fatalError("Error creating bubble image factory.")
-        }
-        
-        let color = UIColor.jsq_messageBubbleBlue()
-        return bubbleImageFactory.outgoingMessagesBubbleImage(with: color)
-    }()
-    
-    var incomingBubbleImageView: JSQMessagesBubbleImage = {
-        guard let bubbleImageFactory = JSQMessagesBubbleImageFactory() else {
-            fatalError("Error creating bubble image factory.")
-        }
-        
-        let color = UIColor.jsq_messageBubbleLightGray()
-        return bubbleImageFactory.incomingMessagesBubbleImage(with: color)
-    }()
     
     // MARK: - VC Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupJSQMessagesViewController()
+        setupMessagesViewController()
         tryObservingMessages()
     }
     
-    func setupJSQMessagesViewController() {
-        // 1. identify current user
-        senderId = User.current.uid
-        senderDisplayName = User.current.username
-        title = chat.title
+    func setupMessagesViewController() {
+        title = chat?.title
         
-        // 2. remove attachment button
-        inputToolbar.contentView.leftBarButtonItem = nil
-        
-        // 3. remove avatars
-        collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
-        collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        
-        // 4. change background color to match theme
-        if #available(iOS 13.0, *) {
-            collectionView.backgroundColor = .systemBackground
-            inputToolbar.contentView.textView.backgroundColor = .systemBackground
-            inputToolbar.contentView.textView.textColor = .label
-        } else {
-            // Fallback on earlier versions
+        // Remove avatars
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+            layout.textMessageSizeCalculator.messageLabelFont = .preferredFont(forTextStyle: .body)
         }
+        
+        // Conform to delegates
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
     }
     
     func tryObservingMessages() {
@@ -78,7 +54,7 @@ class ChatViewController: JSQMessagesViewController {
             
             if let message = message {
                 self?.messages.append(message)
-                self?.finishReceivingMessage()
+                self?.messagesCollectionView.reloadData()
             }
         })
     }
@@ -94,48 +70,54 @@ class ChatViewController: JSQMessagesViewController {
     }
 }
 
-// MARK: - JSQMessagesCollectionViewDataSource
+// MARK: - MessagesDataSource
 
-extension ChatViewController {
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension ChatViewController: MessagesDataSource {
+    var currentSender: SenderType {
+        // Identify current user
+        return Sender(senderId: User.current.uid, displayName: User.current.username)
+    }
+    
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages[indexPath.section]
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
-    
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
-    }
-    
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
-        return messages[indexPath.item].jsqMessageValue
-    }
-    
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = messages[indexPath.item]
-        let sender = message.sender
-        
-        if sender.uid == senderId {
-            return outgoingBubbleImageView
-        } else {
-            return incomingBubbleImageView
-        }
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let message = messages[indexPath.item]
-        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
-        cell.textView?.textColor = (message.sender.uid == senderId) ? .white : .black
+}
 
-        return cell
+// MARK: - MessagesDisplayDelegate
+
+extension ChatViewController: MessagesDisplayDelegate {
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        // Put white text on a blue bubble and dark text on a white bubble
+        return isFromCurrentSender(message: message) ? .white : .darkText
+    }
+    
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? .mgBlue : .mgLightGray
+    }
+    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        let tail: MessageStyle.TailCorner = isFromCurrentSender(message: message) ? .bottomRight : .bottomLeft
+        return .bubbleTail(tail, .curved)
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        avatarView.isHidden = true
     }
 }
 
 // MARK: - Send Message
 
-extension ChatViewController {
+extension ChatViewController: InputBarAccessoryViewDelegate {
     func sendMessage(_ message: Message) {
-        if chat?.key == nil {
+        guard let chat else { return }
+        
+        if chat.key == nil {
             ChatService.create(from: message, with: chat, completion: { [weak self] chat in
-                guard let chat = chat else { return }
+                guard let chat else { return }
                 
                 self?.chat = chat
                 
@@ -146,38 +128,12 @@ extension ChatViewController {
         }
     }
     
-    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        // 1
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let message = Message(content: text)
-        // 2
         sendMessage(message)
-        // 3
-        finishSendingMessage()
+        messagesCollectionView.reloadData()
         
-        // 4
-        JSQSystemSoundPlayer.jsq_playMessageSentAlert()
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension ChatListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toChat", sender: self)
-    }
-}
-
-// MARK: - Navigation
-
-extension ChatListViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        
-        if segue.identifier == "toChat",
-            let destination = segue.destination as? ChatViewController,
-            let indexPath = tableView.indexPathForSelectedRow {
-            
-            destination.chat = chats[indexPath.row]
-        }
+        // Clear text after sending
+        inputBar.inputTextView.text = ""
     }
 }
