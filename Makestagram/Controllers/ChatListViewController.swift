@@ -58,7 +58,7 @@ extension ChatListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell") as! ChatListCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatListCell") as? ChatListCell else { return UITableViewCell() }
         
         let chat = chats[indexPath.row]
         cell.titleLabel.text = chat.title

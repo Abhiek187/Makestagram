@@ -13,7 +13,7 @@ extension UIFont {
     
     // MARK: - Brand Fonts
     
-    static var mgRegular: UIFont {
-        return UIFont(name: "OpenSans", size: 16)!
+    static var mgRegular: UIFont? {
+        return UIFont(name: "OpenSans", size: 16)
     }
 }

@@ -32,14 +32,16 @@ struct ChatService {
         
         var multiUpdateValue = [String : Any]()
         
-        for uid in chat.memberUIDs {
-            multiUpdateValue["chats/\(uid)/\(chatRef.key ?? "unknown")"] = chatDict
+        if let chatKey = chatRef.key {
+            for uid in chat.memberUIDs {
+                multiUpdateValue["chats/\(uid)/\(chatKey)"] = chatDict
+            }
+            
+            let messagesRef = DatabaseReference.toLocation(.messages(key: chatKey)).childByAutoId()
+            let messageKey = messagesRef.key
+            
+            multiUpdateValue["messages/\(chatKey)/\(messageKey ?? "unknown")"] = message.dictValue
         }
-        
-        let messagesRef = DatabaseReference.toLocation(.messages(key: chatRef.key!)).childByAutoId()
-        let messageKey = messagesRef.key
-        
-        multiUpdateValue["messages/\(chatRef.key ?? "unknown")/\(messageKey ?? "unknown")"] = message.dictValue
         
         let rootRef = DatabaseReference.toLocation(.root)
         rootRef.updateChildValues(multiUpdateValue) { (error, ref) in
