@@ -42,6 +42,7 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messageInputBar.delegate = self
     }
     
     func tryObservingMessages() {
@@ -131,5 +132,8 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         let message = Message(content: text)
         sendMessage(message)
         messagesCollectionView.reloadData()
+        
+        // Clear text after sending
+        inputBar.inputTextView.text = ""
     }
 }

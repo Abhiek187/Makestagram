@@ -24,7 +24,7 @@ class Message: MessageType {
                         "uid" : sender.senderId]
         
         return ["sender" : userDict,
-                "content" : kind,
+                "content" : content,
                 "timestamp" : sentDate.timeIntervalSince1970]
     }
     
