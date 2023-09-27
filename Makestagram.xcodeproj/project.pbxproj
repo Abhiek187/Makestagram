@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,6 +56,7 @@
 		F1360FCD2707CE7300A28F32 /* Chat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FC72707CE7300A28F32 /* Chat.storyboard */; };
 		F1360FCE2707CE7300A28F32 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FC92707CE7300A28F32 /* Profile.storyboard */; };
 		F1360FCF2707CE7300A28F32 /* FindFriends.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1360FCB2707CE7300A28F32 /* FindFriends.storyboard */; };
+		F1CB4CA52AC3AF0200FAA8DE /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1CB4CA42AC3AF0200FAA8DE /* Sender.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		F1360FC82707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Chat.storyboard; sourceTree = "<group>"; };
 		F1360FCA2707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		F1360FCC2707CE7300A28F32 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FindFriends.storyboard; sourceTree = "<group>"; };
+		F1CB4CA42AC3AF0200FAA8DE /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +210,7 @@
 				25AC900B229362DE007F24CB /* Post.swift */,
 				25DDB73422976DA800B3DE23 /* Chat.swift */,
 				25DDB7362297710900B3DE23 /* Message.swift */,
+				F1CB4CA42AC3AF0200FAA8DE /* Sender.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				25DDB742229780AD00B3DE23 /* ChatListCell.swift in Sources */,
 				253A2E942294849800B54B6C /* LikeService.swift in Sources */,
 				25AC900C229362DE007F24CB /* Post.swift in Sources */,
+				F1CB4CA52AC3AF0200FAA8DE /* Sender.swift in Sources */,
 				25DDB74022977BC100B3DE23 /* ChatListViewController.swift in Sources */,
 				255DA7EA229381DA00EA6911 /* PostImageCell.swift in Sources */,
 				25DDB7372297710900B3DE23 /* Message.swift in Sources */,

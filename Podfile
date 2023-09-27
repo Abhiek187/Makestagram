@@ -23,7 +23,7 @@ target 'Makestagram' do
   pod 'GoogleSignIn'
   pod 'FirebaseUI/Google'
   
-  pod 'JSQMessagesViewController'
+  pod 'MessageKit'
   
 end
 
