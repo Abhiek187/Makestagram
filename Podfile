@@ -1,6 +1,6 @@
 source 'https://cdn.cocoapods.org/'
 # Uncomment the next line to define a global platform for your project
-platform :ios, '12.0'
+platform :ios, '13.0'
 
 target 'Makestagram' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -23,15 +23,13 @@ target 'Makestagram' do
   pod 'GoogleSignIn'
   pod 'FirebaseUI/Google'
   
-  pod 'MessageKit'
-  
 end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       # Change the deployment target of all pods to match the project's target
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
       # As of Xcode 14, all signed pod bundles require a development team
       config.build_settings['DEVELOPMENT_TEAM'] = 'UF6E5BVT98'
       # Disable warning for quoted headers

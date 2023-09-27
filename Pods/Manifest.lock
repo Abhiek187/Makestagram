@@ -152,13 +152,8 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.3.0)
-  - InputBarAccessoryView (5.5.0):
-    - InputBarAccessoryView/Core (= 5.5.0)
-  - InputBarAccessoryView/Core (5.5.0)
   - Kingfisher (7.9.1)
   - leveldb-library (1.22.2)
-  - MessageKit (3.8.0):
-    - InputBarAccessoryView (~> 5.5.0)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
@@ -181,7 +176,6 @@ DEPENDENCIES:
   - FirebaseUI/Google
   - GoogleSignIn
   - Kingfisher
-  - MessageKit
 
 SPEC REPOS:
   trunk:
@@ -212,10 +206,8 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
-    - InputBarAccessoryView
     - Kingfisher
     - leveldb-library
-    - MessageKit
     - nanopb
     - PromisesObjC
     - RecaptchaInterop
@@ -248,14 +240,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 13e2c67ede716b8741c7989e26893d151b2b2084
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
-  InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
   Kingfisher: 1d14e9f59cbe19389f591c929000332bf70efd32
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
-  MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: cc7c8be68ca9d6e81ad1b22425aa1d29f30b8a22
+PODFILE CHECKSUM: 798b389ddfc9a53db390877b13971211cd3c6043
 
 COCOAPODS: 1.13.0

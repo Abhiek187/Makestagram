@@ -73,7 +73,7 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate {
 // MARK: - MessagesDataSource
 
 extension ChatViewController: MessagesDataSource {
-    func currentSender() -> SenderType {
+    var currentSender: SenderType {
         // Identify current user
         return Sender(senderId: User.current.uid, displayName: User.current.username)
     }
