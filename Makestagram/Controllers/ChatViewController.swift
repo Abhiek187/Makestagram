@@ -39,6 +39,7 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate {
             layout.textMessageSizeCalculator.messageLabelFont = .preferredFont(forTextStyle: .body)
         }
         
+        // Conform to delegates
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -53,7 +54,6 @@ class ChatViewController: MessagesViewController, MessagesLayoutDelegate {
             
             if let message = message {
                 self?.messages.append(message)
-                //self?.finishReceivingMessage()
                 self?.messagesCollectionView.reloadData()
             }
         })
