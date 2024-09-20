@@ -15,10 +15,9 @@ target 'Makestagram' do
   pod 'Firebase/Storage'
   pod 'Kingfisher'
   
-  pod 'FBSDKLoginKit'
-  pod 'FBSDKCoreKit'
-  pod 'FBSDKShareKit'
-  pod 'FirebaseUI/Facebook'
+  # Temp fix until FirebaseFacebookAuthUI supports FBSDKLoginKit 17.0
+  pod 'FBSDKLoginKit', '~> 16.0'
+  pod 'FirebaseUI/Facebook', '~> 14.0'
   
   pod 'GoogleSignIn'
   pod 'FirebaseUI/Google'

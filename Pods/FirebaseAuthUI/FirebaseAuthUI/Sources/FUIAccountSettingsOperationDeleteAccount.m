@@ -19,6 +19,8 @@
 #import "FirebaseAuthUI/Sources/FUIAccountSettingsOperation_Internal.h"
 #import "FirebaseAuthUI/Sources/FUIAccountSettingsOperationForgotPassword.h"
 
+@import FirebaseAuth;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation FUIAccountSettingsOperationDeleteAccount
@@ -41,7 +43,8 @@ NS_ASSUME_NONNULL_BEGIN
                                   alertMessage:FUILocalizedString(kStr_DeleteAccountBody)
                               alertCloseButton:FUILocalizedString(kStr_Cancel)
                                providerHandler:^(id<FIRUserInfo> provider) {
-    if (![provider.providerID isEqualToString:FIREmailAuthProviderID]) {
+    // TODO: Use public API after Firebase 11 minimum.
+    if (![provider.providerID isEqualToString:@"password"]) {
       [self reauthenticateWithProvider:provider.providerID actionHandler:^{
         [self showDeleteAccountView];
       }];

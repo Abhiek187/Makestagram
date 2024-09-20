@@ -17,7 +17,7 @@
 #import "FirebaseAuthUI/Sources/Public/FirebaseAuthUI/FUIAuthPickerViewController.h"
 
 #import <AuthenticationServices/AuthenticationServices.h>
-#import <FirebaseAuth/FirebaseAuth.h>
+@import FirebaseAuth;
 
 #import "FirebaseAuthUI/Sources/Public/FirebaseAuthUI/FUIAuthBaseViewController_Internal.h"
 #import "FirebaseAuthUI/Sources/FUIAuthSignInButton.h"
@@ -171,14 +171,7 @@ static const CGFloat kTOSViewHorizontalMargin = 16.0f;
       + kButtonContainerBottomMargin + kTOSViewBottomMargin;
   CGFloat contentViewWidth = CGRectGetWidth(self.view.bounds);
   _scrollView.frame = self.view.frame;
-  CGFloat scrollViewHeight;
-  if (@available(iOS 11.0, *)) {
-    scrollViewHeight = CGRectGetHeight(_scrollView.frame) - _scrollView.safeAreaInsets.top;
-  } else {
-    scrollViewHeight = CGRectGetHeight(_scrollView.frame)
-        - CGRectGetHeight(self.navigationController.navigationBar.frame)
-        - CGRectGetHeight([UIApplication sharedApplication].statusBarFrame);
-  }
+  CGFloat scrollViewHeight = CGRectGetHeight(_scrollView.frame) - _scrollView.safeAreaInsets.top;
   CGFloat contentViewY = scrollViewHeight - contentViewHeight;
   if (contentViewY < 0) {
     contentViewY = 0;

@@ -20,13 +20,13 @@
 
 #import <FirebaseCore/FIRApp.h>
 #import <FirebaseCore/FIROptions.h>
-#import <FirebaseAuth/FIRAuth.h>
-#import <FirebaseAuth/FirebaseAuth.h>
 #import "FirebaseAuthUI/Sources/Public/FirebaseAuthUI/FUIAuthBaseViewController_Internal.h"
 #import "FirebaseAuthUI/Sources/Public/FirebaseAuthUI/FUIAuthErrors.h"
 #import "FirebaseAuthUI/Sources/Public/FirebaseAuthUI/FUIAuthErrorUtils.h"
 #import "FirebaseAuthUI/Sources/Public/FirebaseAuthUI/FUIAuthPickerViewController.h"
 #import "FirebaseAuthUI/Sources/Public/FirebaseAuthUI/FUIAuthStrings.h"
+
+@import FirebaseAuth;
 
 /** @var kAppNameCodingKey
     @brief The key used to encode the app Name for NSCoding.
@@ -238,7 +238,10 @@ static NSString *const kFirebaseAuthUIFrameworkMarker = @"FirebaseUI-iOS";
     if (error) {
       // Check for "credential in use" conflict error and handle appropriately.
       if (error.code == FIRAuthErrorCodeCredentialAlreadyInUse) {
-        FIRAuthCredential *newCredential = error.userInfo[FIRAuthErrorUserInfoUpdatedCredentialKey];
+        // TODO: When Firebase 11 is minimum update string to
+        // FIRAuthErrors.userInfoUpdatedCredentialKey
+        FIRAuthCredential *newCredential =
+          error.userInfo[@"FIRAuthErrorUserInfoUpdatedCredentialKey"];
         NSDictionary *userInfo = @{ };
         if (newCredential) {
           userInfo = @{ FUIAuthCredentialKey : newCredential };
@@ -349,6 +352,7 @@ static NSString *const kFirebaseAuthUIFrameworkMarker = @"FirebaseUI-iOS";
                                            URL:(nullable NSURL *)url
                                          error:(nullable NSError *)error {
   dispatch_async(dispatch_get_main_queue(), ^{
+    // Firebase 10 signatures.
     if ([self.delegate respondsToSelector:@selector(authUI:didSignInWithAuthDataResult:URL:error:)]) {
       [self.delegate authUI:self
           didSignInWithAuthDataResult:authDataResult
@@ -357,6 +361,13 @@ static NSString *const kFirebaseAuthUIFrameworkMarker = @"FirebaseUI-iOS";
     }
     if ([self.delegate respondsToSelector:@selector(authUI:didSignInWithAuthDataResult:error:)]) {
       [self.delegate authUI:self didSignInWithAuthDataResult:authDataResult error:error];
+    }
+    // Firebase 11+ signatures.
+    if ([self.delegate respondsToSelector:@selector(authUI:didSignInWith:URL:error:)]) {
+      [self.delegate authUI:self didSignInWith:authDataResult URL:url error:error];
+    }
+    if ([self.delegate respondsToSelector:@selector(authUI:didSignInWith:error:)]) {
+      [self.delegate authUI:self didSignInWith:authDataResult error:error];
     }
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
