@@ -44,6 +44,15 @@
 		25AC900C229362DE007F24CB /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC900B229362DE007F24CB /* Post.swift */; };
 		25AC900E229366D2007F24CB /* UIImage+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC900D229366D2007F24CB /* UIImage+Size.swift */; };
 		25AC901022936759007F24CB /* StorageReference+Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25AC900F22936759007F24CB /* StorageReference+Post.swift */; };
+		25CCC21E2D6A209500AF9183 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC21D2D6A209500AF9183 /* FirebaseAuth */; };
+		25CCC2202D6A209500AF9183 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC21F2D6A209500AF9183 /* FirebaseCore */; };
+		25CCC2222D6A209500AF9183 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC2212D6A209500AF9183 /* FirebaseDatabase */; };
+		25CCC2242D6A209500AF9183 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC2232D6A209500AF9183 /* FirebaseStorage */; };
+		25CCC2272D6A21A800AF9183 /* FirebaseAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC2262D6A21A800AF9183 /* FirebaseAuthUI */; };
+		25CCC2292D6A21A800AF9183 /* FirebaseEmailAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC2282D6A21A800AF9183 /* FirebaseEmailAuthUI */; };
+		25CCC22B2D6A21A800AF9183 /* FirebaseFacebookAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC22A2D6A21A800AF9183 /* FirebaseFacebookAuthUI */; };
+		25CCC22D2D6A21A800AF9183 /* FirebaseGoogleAuthUI in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC22C2D6A21A800AF9183 /* FirebaseGoogleAuthUI */; };
+		25CCC2302D6A220800AF9183 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 25CCC22F2D6A220800AF9183 /* Kingfisher */; };
 		25D8FE6122987811003EB224 /* NewChatUserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8FE6022987811003EB224 /* NewChatUserCell.swift */; };
 		25D8FE6322987DED003EB224 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25D8FE6222987DED003EB224 /* ChatViewController.swift */; };
 		25DDB73522976DA800B3DE23 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DDB73422976DA800B3DE23 /* Chat.swift */; };
@@ -119,6 +128,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1CB4CA82AC4DF9E00FAA8DE /* MessageKit in Frameworks */,
+				25CCC22B2D6A21A800AF9183 /* FirebaseFacebookAuthUI in Frameworks */,
+				25CCC22D2D6A21A800AF9183 /* FirebaseGoogleAuthUI in Frameworks */,
+				25CCC2272D6A21A800AF9183 /* FirebaseAuthUI in Frameworks */,
+				25CCC2302D6A220800AF9183 /* Kingfisher in Frameworks */,
+				25CCC2202D6A209500AF9183 /* FirebaseCore in Frameworks */,
+				25CCC2222D6A209500AF9183 /* FirebaseDatabase in Frameworks */,
+				25CCC2242D6A209500AF9183 /* FirebaseStorage in Frameworks */,
+				25CCC2292D6A21A800AF9183 /* FirebaseEmailAuthUI in Frameworks */,
+				25CCC21E2D6A209500AF9183 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +298,15 @@
 			name = Makestagram;
 			packageProductDependencies = (
 				F1CB4CA72AC4DF9E00FAA8DE /* MessageKit */,
+				25CCC21D2D6A209500AF9183 /* FirebaseAuth */,
+				25CCC21F2D6A209500AF9183 /* FirebaseCore */,
+				25CCC2212D6A209500AF9183 /* FirebaseDatabase */,
+				25CCC2232D6A209500AF9183 /* FirebaseStorage */,
+				25CCC2262D6A21A800AF9183 /* FirebaseAuthUI */,
+				25CCC2282D6A21A800AF9183 /* FirebaseEmailAuthUI */,
+				25CCC22A2D6A21A800AF9183 /* FirebaseFacebookAuthUI */,
+				25CCC22C2D6A21A800AF9183 /* FirebaseGoogleAuthUI */,
+				25CCC22F2D6A220800AF9183 /* Kingfisher */,
 			);
 			productName = Makestagram;
 			productReference = 2511F3FE2291D14E004D5CA8 /* Makestagram.app */;
@@ -312,6 +339,9 @@
 			mainGroup = 2511F3F52291D14E004D5CA8;
 			packageReferences = (
 				F1CB4CA62AC4DF9E00FAA8DE /* XCRemoteSwiftPackageReference "MessageKit" */,
+				25CCC21C2D6A209500AF9183 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				25CCC2252D6A21A800AF9183 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */,
+				25CCC22E2D6A220800AF9183 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 2511F3FF2291D14E004D5CA8 /* Products */;
 			projectDirPath = "";
@@ -581,6 +611,7 @@
 				DEVELOPMENT_TEAM = UF6E5BVT98;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Makestagram/Supporting/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool2.Makestagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -596,6 +627,7 @@
 				DEVELOPMENT_TEAM = UF6E5BVT98;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Makestagram/Supporting/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool2.Makestagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -627,17 +659,86 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		25CCC21C2D6A209500AF9183 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.8.1;
+			};
+		};
+		25CCC2252D6A21A800AF9183 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/FirebaseUI-iOS.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+		25CCC22E2D6A220800AF9183 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.2.0;
+			};
+		};
 		F1CB4CA62AC4DF9E00FAA8DE /* XCRemoteSwiftPackageReference "MessageKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MessageKit/MessageKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		25CCC21D2D6A209500AF9183 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC21C2D6A209500AF9183 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		25CCC21F2D6A209500AF9183 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC21C2D6A209500AF9183 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		25CCC2212D6A209500AF9183 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC21C2D6A209500AF9183 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		25CCC2232D6A209500AF9183 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC21C2D6A209500AF9183 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		25CCC2262D6A21A800AF9183 /* FirebaseAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC2252D6A21A800AF9183 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseAuthUI;
+		};
+		25CCC2282D6A21A800AF9183 /* FirebaseEmailAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC2252D6A21A800AF9183 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseEmailAuthUI;
+		};
+		25CCC22A2D6A21A800AF9183 /* FirebaseFacebookAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC2252D6A21A800AF9183 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseFacebookAuthUI;
+		};
+		25CCC22C2D6A21A800AF9183 /* FirebaseGoogleAuthUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC2252D6A21A800AF9183 /* XCRemoteSwiftPackageReference "FirebaseUI-iOS" */;
+			productName = FirebaseGoogleAuthUI;
+		};
+		25CCC22F2D6A220800AF9183 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 25CCC22E2D6A220800AF9183 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		F1CB4CA72AC4DF9E00FAA8DE /* MessageKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F1CB4CA62AC4DF9E00FAA8DE /* XCRemoteSwiftPackageReference "MessageKit" */;
