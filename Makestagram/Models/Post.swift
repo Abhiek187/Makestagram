@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import FirebaseDatabase.FIRDataSnapshot
+import FirebaseDatabase
 
 class Post: MGKeyed {
     var key: String?

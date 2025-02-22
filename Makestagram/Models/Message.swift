@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import FirebaseDatabase.FIRDataSnapshot
+import FirebaseDatabase
 import MessageKit
 
 class Message: MessageType {

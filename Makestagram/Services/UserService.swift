@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import FirebaseAuth.FIRUser
+import FirebaseAuth
 import FirebaseDatabase
 
 struct UserService {
