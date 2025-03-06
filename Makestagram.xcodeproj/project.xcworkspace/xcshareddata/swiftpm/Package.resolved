@@ -33,8 +33,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/facebook/facebook-ios-sdk.git",
       "state" : {
-        "revision" : "619d1772808425faa010d92293b26eeb9bc1d630",
-        "version" : "17.4.0"
+        "revision" : "3fe31c168903759de1c5752d12856c5c437c6862",
+        "version" : "16.3.1"
       }
     },
     {
@@ -51,8 +51,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/FirebaseUI-iOS.git",
       "state" : {
-        "revision" : "5347f5c59d0c00dd16b64fdc84dd20bd54f36b22",
-        "version" : "15.0.0"
+        "revision" : "5e0fd0665ab88729cbc2a0f02ba3e75ccef96bb9",
+        "version" : "14.2.6"
       }
     },
     {
